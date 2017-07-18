@@ -9,9 +9,9 @@ export default class App extends Component {
   render() {
     return (
       <div>
-        <header>Donut Menu</header>
+        <header>Quests</header>
         <DonutsMenuContainer />
-        <header>Donuts Cart</header>
+        <header>Completed</header>
         <DonutsCartContainer />
       </div>
     )

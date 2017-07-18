@@ -3,18 +3,16 @@ import App from '../../imports/ui/App.jsx';
 import AppHeader from './layout/AppHeader.jsx';
 import { createContainer } from 'meteor/react-meteor-data';
 
-
-
 class Home extends Component {
 
   showUserNav(){
       return (
         <div>
                 <form action="/register" method="get">
-                <button className="link">Signup</button>
+                  <button className="link">Sign up</button>
                 </form>
                 <form action="/login" method="get">
-                <button className="link">Login</button>
+                  <button className="link">Sign in</button>
                 </form>
         </div>
       );
@@ -24,7 +22,7 @@ class Home extends Component {
         return (<div>
                 <h1> Welcome {currentUser.username} </h1>
                 <form action="/logout" method="get">
-                <button className="link">logout</button>
+                  <button className="link">Log out</button>
                 </form>
                 </div>);
   }
@@ -35,8 +33,8 @@ render() {
 
     return (
       <div className="app-container">
-      <AppHeader appTitle="My Awesome Donut App" userNav =
-      {currentUser ? this.showUserNav_login() : this.showUserNav()} />
+      <AppHeader appTitle="SpeakAbility" userNav =
+        {currentUser ? this.showUserNav_login() : this.showUserNav()} />
        <main className="container">
          {this.props.content}
        </main>

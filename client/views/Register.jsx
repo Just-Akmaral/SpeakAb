@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-
 import RegisterForm from '../components/forms/RegisterForm.jsx';
 
 export default class Register extends Component {
@@ -9,7 +8,6 @@ export default class Register extends Component {
 
 	createUser(e) {
 		e.preventDefault();
-		console.log("1");
 	    const email = $('#email').val();
 	    const password = $('#password').val().trim();
 	    const name = $('#usr').val();
@@ -34,7 +32,7 @@ export default class Register extends Component {
     return (
 			<div className="row">
 				<div className="col-md-6 col-md-offset-3">
-					<h1>Register</h1>
+					<h1>SpeakAbility</h1>
 						<RegisterForm
 							submitBtnLabel="Register"
 							submitAction={this.createUser}/>
