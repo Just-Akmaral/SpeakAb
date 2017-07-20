@@ -1,5 +1,5 @@
 {
-  "name": "donuts-menu",
+  "name": "speakab",
   "private": true,
   "scripts": {
     "start": "meteor run"

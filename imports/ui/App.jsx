@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
-
-import DonutsCartContainer from './DonutsCart.jsx';
-import DonutsMenuContainer from './DonutsMenu.jsx';
+import QuestsContainer from './Dashboard.jsx';
 
 
 export default class App extends Component {
@@ -10,9 +8,7 @@ export default class App extends Component {
     return (
       <div>
         <header>Quests</header>
-        <DonutsMenuContainer />
         <header>Completed</header>
-        <DonutsCartContainer />
       </div>
     )
   }

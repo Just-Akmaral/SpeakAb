@@ -1,13 +1,9 @@
 import React, { Component } from 'react';
-
 import Home from './components/Home.jsx';
-
 import {mount} from 'react-mounter';
-
 import Homepage from './views/Homepage.jsx';
 import Login from './views/Login.jsx';
 import Register from './views/Register.jsx';
-
 import App from '../imports/ui/App.jsx';
 
 FlowRouter.route('/', {

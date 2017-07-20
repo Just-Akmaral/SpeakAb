@@ -20,34 +20,30 @@ class Home extends Component {
 
   showUserNav_login() {
         return (<div>
-                <h1> Welcome {currentUser.username} </h1>
+                <h1>{currentUser.username}</h1>
                 <form action="/logout" method="get">
                   <button className="link">Log out</button>
                 </form>
                 </div>);
   }
 
-render() {
-
-    currentUser = Meteor.user();
-
-    return (
-      <div className="app-container">
-      <AppHeader appTitle="SpeakAbility" userNav =
-        {currentUser ? this.showUserNav_login() : this.showUserNav()} />
-       <main className="container">
-         {this.props.content}
-       </main>
-     </div>
-    );
- }
+  render() {
+      currentUser = Meteor.user();
+      return (
+        <div className="app-container">
+          <AppHeader appTitle="SpeakAbility" userNav = {currentUser ? this.showUserNav_login() : this.showUserNav()} />
+           <main className="container">
+             {this.props.content}
+           </main>
+       </div>
+      );
+   }
 }
 
 
 export default createContainer(() => {
     let subscription = Meteor.subscribe("userData");
     let sub = subscription.ready();
-    Meteor.subscribe("donuts");
-    Meteor.subscribe("donuts_menu");
+    Meteor.subscribe("quests");
     return { sub: sub };
 }, Home);

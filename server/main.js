@@ -1,7 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-//import '../imports/api/donuts.js'
-
-import {dbDonuts, dbDonutsMenu} from '../imports/api/donuts.js';
+import {dbQuests} from '../imports/api/quests.js';
 
 Meteor.publish("userData", function () {
         if (this.userId) {
@@ -10,11 +8,7 @@ Meteor.publish("userData", function () {
             this.ready();
 }});
 
-Meteor.publish("donuts", function () {
-        console.log(dbDonuts);
-        return dbDonuts.find({});
-});
-
-Meteor.publish("donuts_menu", function () {
-        return dbDonutsMenu.find({});
+Meteor.publish("quests", function () {
+        console.log(dbQuests);
+        return dbQuests.find({});
 });

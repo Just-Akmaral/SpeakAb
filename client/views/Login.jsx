@@ -25,8 +25,8 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div className="">
-         <div className="">
+      <div>
+         <div>
            <h1>SpeakAbility</h1>
          <LoginForm submitBtnLabel="Login" submitAction={this.loginWithPassword} />
             {this.props.registerLink}
