@@ -9,6 +9,7 @@ class Quest extends Component {
     return (
       <li key={this.props.quest._id}>
         <a href = "#">{this.props.quest.name} : {this.props.quest.duration} min</a>
+        <img src = {this.props.quest.img} alt={this.props.quest.name}/>
       </li>
     )
   }

@@ -14,6 +14,7 @@ export const dbQuests = new Mongo.Collection('quests');
 // dbQuests.insert({
 //   name: "New-York",
 //   duration: 20,
+//   img: "/images/New-York.jpg",
 //   locations: [
 //     {
 //       name: "airport",

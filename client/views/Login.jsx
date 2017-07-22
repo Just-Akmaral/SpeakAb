@@ -28,7 +28,7 @@ export default class Login extends Component {
       <div>
          <div>
            <h1>SpeakAbility</h1>
-         <LoginForm submitBtnLabel="Login" submitAction={this.loginWithPassword} />
+           <LoginForm submitBtnLabel="Login" submitAction={this.loginWithPassword} />
             {this.props.registerLink}
       </div>
       </div>

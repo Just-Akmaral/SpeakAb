@@ -1,10 +1,22 @@
 import React, { Component } from 'react';
 import Home from './components/Home.jsx';
-import {mount} from 'react-mounter';
 import Homepage from './views/Homepage.jsx';
 import Login from './views/Login.jsx';
 import Register from './views/Register.jsx';
 import App from '../imports/ui/App.jsx';
+
+
+// import Map from './components/Map.jsx';
+//
+// FlowRouter.route('/map', {
+//   name: 'map',
+//   action: function() {
+//     mount(Home, {
+//       content: <Map />
+//     });
+//   }
+// });
+
 
 FlowRouter.route('/', {
   name: 'home',
