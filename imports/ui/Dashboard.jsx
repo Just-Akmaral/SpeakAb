@@ -8,7 +8,7 @@ class Quest extends Component {
   render(){
     return (
       <li key={this.props.quest._id}>
-        <span>{this.props.quest.name}</span>
+        <a href = "#">{this.props.quest.name} : {this.props.quest.duration} min</a>
       </li>
     )
   }
@@ -21,7 +21,7 @@ class Dashboard extends Component {
     return(
       <ul>
         {this.props.quests.map(function(quest){
-          return <Quests quest={quest}/>
+          return <Quest quest={quest}/>
         })
         }
       </ul>
@@ -30,6 +30,6 @@ class Dashboard extends Component {
 
 }
 
-export default QuestsContainer = createContainer(() => {
+export default DashboardContainer = createContainer(() => {
   return { quests: dbQuests.find({}).fetch() };
 }, Dashboard)

@@ -9,6 +9,5 @@ Meteor.publish("userData", function () {
 }});
 
 Meteor.publish("quests", function () {
-        console.log(dbQuests);
         return dbQuests.find({});
 });

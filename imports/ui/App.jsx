@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import QuestsContainer from './Dashboard.jsx';
+import DashboardContainer from './Dashboard.jsx';
 
 
 export default class App extends Component {
@@ -8,7 +8,7 @@ export default class App extends Component {
     return (
       <div>
         <header>Quests</header>
-        <header>Completed</header>
+        <DashboardContainer/>
       </div>
     )
   }
