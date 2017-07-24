@@ -23,7 +23,7 @@ export default class Register extends Component {
 	        	alert("there was an error: " + error.reason);
 	          console.log("there was an error: " + error.reason);
 	        } else {
-	          FlowRouter.go('Loginpage');
+	          FlowRouter.go('Dashboard');
 					};
 				});
  }

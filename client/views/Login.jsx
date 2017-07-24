@@ -18,7 +18,7 @@ export default class Login extends Component {
       	alert("there was an error: " + error.reason);
         console.log("There was an error:" + error.reason);
       } else {
-         FlowRouter.go('/Loginpage');
+         FlowRouter.go('/Dashboard');
        }
   });
  }

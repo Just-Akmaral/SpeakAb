@@ -6,6 +6,18 @@ import Login from './views/Login.jsx';
 import Register from './views/Register.jsx';
 import App from '../imports/ui/App.jsx';
 
+import Map from './views/Map.jsx';
+
+
+FlowRouter.route('/map/:quest_id', {
+  name: 'map',
+  action(params) {
+    mount(Home, {
+      content: <Map quest_id={params.quest_id}/>
+    });
+  }
+});
+
 
 FlowRouter.route('/', {
   name: 'home',
@@ -35,8 +47,8 @@ FlowRouter.route('/register', {
   }
 });
 
-FlowRouter.route('/Loginpage', {
-  name: 'Loginpage',
+FlowRouter.route('/Dashboard', {
+  name: 'Dashboard',
   action: function() {
     mount(Home, {
       content: <App />
