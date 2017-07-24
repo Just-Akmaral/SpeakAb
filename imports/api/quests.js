@@ -1,6 +1,8 @@
 import { Mongo } from 'meteor/mongo';
 export const dbQuests = new Mongo.Collection('quests');
 
+
+
 // dbQuests.insert({
 //   name: "New-York",
 //   duration: 20,
@@ -8,11 +10,17 @@ export const dbQuests = new Mongo.Collection('quests');
 //   locations: [
 //     {
 //       name: "airport",
-//       img: "url-img"
+//       img: "url-img",
+//       vocabulary: [{text: "aisle"},{text: "aisle"}],
+//       description: "Welcome to airport",
+//       conversation: "right now conversation"
 //     },
 //     {
 //       name: "Time Square",
-//       img: "url-img"
+//       img: "url-img",
+//       vocabulary: [{text: "aisle"},{text: "aisle"}],
+//       description: "Welcome to Time Square",
+//       conversation: "right now conversation"
 //     }
 //   ]
 // });
