@@ -9,6 +9,10 @@ export const dbQuests = new Mongo.Collection('quests');
 //     {
 //       name: "airport",
 //       img: "url-img"
+//     },
+//     {
+//       name: "Time Square",
+//       img: "url-img"
 //     }
 //   ]
 // });

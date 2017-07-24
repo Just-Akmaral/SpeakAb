@@ -3,11 +3,15 @@ import { dbQuests } from '/imports/api/quests.js';
 import { createContainer } from 'meteor/react-meteor-data';
 
 class Locations extends Component {
-
+  // {this.props.quest_item.name}
   render(){
     return (
       <div>
-        {this.props.quest_item}
+        <li key={this.props.location._id}>
+          <a href = "#">
+            {this.props.location.name}
+          </a>
+        </li>
       </div>
     )
   }
@@ -17,21 +21,25 @@ class Locations extends Component {
 
 class Map extends Component {
 
-  findQuest(item){
-
-  //  return dbQuests.find(ObjectId(item));
-  return item;
-  }
-
   render(){
-    return(
-      <Locations quest_item = {this.findQuest(this.props.quest_id)} />
-    )
+    if(!this.props.city)
+      return null;
+    else
+      return (
+        <ul>
+          {this.props.city.locations.map((loc) =>
+            <Locations location = {loc} />
+          )}
+        </ul>
+      )
   }
 
 }
 
-export default MapContainer = createContainer(() => {
-//  return { loc: dbQuests.find({_id: "ji2i7sxpz24nxZiWq"})};
-  return { quests: dbQuests.find({}).fetch() };
+export default MapContainer = createContainer( props => {
+  return {
+    city: dbQuests.findOne(
+       {"_id": props.quest_id}
+    )
+  };
 }, Map)
