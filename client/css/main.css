@@ -82,7 +82,7 @@ li {
       width: 11px;
       height: 7px;
       margin-top: -3px;
-      background: url("../img/arrow-down.svg");
+      background: url("/images/arrow-down.svg");
       background-size: 11px 7px; }
   .header__menu {
     display: none;
@@ -174,7 +174,7 @@ li {
       left: 0;
       width: 15px;
       height: 15px;
-      background: url("../img/time.svg");
+      background: url("/images/time.svg");
       background-size: 15px 15px; }
   .quest__title {
     position: absolute;

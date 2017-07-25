@@ -9,7 +9,7 @@ class Quest extends Component {
   render(){
     return (
       <a className="quest quest--new" key={this.props.quest._id}  href = {"/map/" + this.props.quest._id}>
-        <span className="quest__time">{this.props.quest.duration}</span>
+        <span className="quest__time">{this.props.quest.duration} min</span>
         <h3 className="quest__title">{this.props.quest.name}</h3>
         <span className="quest__progress">
           <span className="quest__progress-bar"></span>

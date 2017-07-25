@@ -11,9 +11,15 @@ class Introduction extends Component {
     else{
       return (
         <div>
-        {this.props.ret[0].description}
-          <button>Start conversation</button>
-          <button>Go to vocabulary</button>
+          <a href="#" className = "link-back">back to the map</a>
+
+              <section className = "location clearfix">
+                <p className = "location__description">{this.props.ret[0].description}</p>
+                <div className = "">
+                  <a href = "#" className = "btn btn-primary">Start conversation</a>
+                  <a href = "#" className = "btn btn-secondary">Show vocabulary</a>
+                </div>
+              </section>
         </div>
       )
     }

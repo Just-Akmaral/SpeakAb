@@ -4,7 +4,7 @@ import LoginForm from '../components/forms/LoginForm.jsx';
 export default class Login extends Component {
 
   static defaultProps = {
-		registerLink: <p>  <a href="/register">Sign up</a></p>
+		registerLink: <a href="/register" className="login__register">Sign up</a>
   }
 
   loginWithPassword(e) {
@@ -25,13 +25,13 @@ export default class Login extends Component {
 
   render() {
     return (
-      <div>
-         <div>
-           <h1>SpeakAbility</h1>
-           <LoginForm submitBtnLabel="Login" submitAction={this.loginWithPassword} />
-            {this.props.registerLink}
-      </div>
-      </div>
+      <main className = "container">
+        <div className = "login clearfix">
+          <h1 className = "login__title">SpeakAbility</h1>
+          <LoginForm submitBtnLabel="Login" submitAction={this.loginWithPassword} />
+          {this.props.registerLink}
+        </div>
+      </main>
     );
   }
 }
