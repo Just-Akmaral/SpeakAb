@@ -9,11 +9,11 @@ import App from '../imports/ui/App.jsx';
 import Map from './views/Map.jsx';
 import Introduction from './views/Introduction.jsx';
 
-FlowRouter.route('/Introduction/:city_id/:location_name', {
+FlowRouter.route('/Introduction/:location_id', {
   name: 'Introduction',
   action(params) {
     mount(Home, {
-      content: <Introduction city_id = {params.city_id} location_name = {params.location_name} />
+      content: <Introduction location_id = {params.location_id} />
     });
   }
 });

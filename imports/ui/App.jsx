@@ -6,9 +6,9 @@ export default class App extends Component {
 
   render() {
     return (
-      <div>
+      <main className = "container clearfix">
         <DashboardContainer/>
-      </div>
+      </main>
     )
   }
 

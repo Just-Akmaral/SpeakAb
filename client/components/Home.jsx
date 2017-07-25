@@ -19,20 +19,22 @@ class Home extends Component {
   }
 
   showUserNav_login() {
-        return (<div>
-                <h1>{currentUser.username}</h1>
-                <form action="/logout" method="get">
-                  <button className="link">Log out</button>
-                </form>
+        return (
+          <div className="header__profile">
+            <img src="/images/profile-pic.png" alt="profile-pic" className="header__pic"/>
+                <span className="header__name">{currentUser.username}</span>
+                <ul action="/logout" method="get" className="header__menu">
+                  <li><a href="#">Выйти</a></li>
+                </ul>
                 </div>);
   }
 
   render() {
       currentUser = Meteor.user();
       return (
-        <div className="app-container">
+        <div>
           <AppHeader appTitle="SpeakAbility" userNav = {currentUser ? this.showUserNav_login() : this.showUserNav()} />
-           <main className="container">
+           <main>
              {this.props.content}
            </main>
        </div>

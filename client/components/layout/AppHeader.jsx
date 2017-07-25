@@ -10,10 +10,12 @@ export default class AppHeader extends Component {
 
 render() {
     return (
-        <div id="header">
-          <h1>{this.props.appTitle}</h1>
-          {this.props.userNav}
-        </div>
+        <header className = "header">
+            <div className = "container clearfix">
+              <a href="/Dashboard" className="header__logo">{this.props.appTitle}</a>
+              {this.props.userNav}
+            </div>
+        </header>
     )
   }
 }

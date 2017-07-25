@@ -7,7 +7,7 @@ class Locations extends Component {
       return (
         <div>
           <li>
-            <a href = {"/Introduction/" + this.props.city_id + "/" + this.props.location_item.name}>
+            <a href = {"/Introduction/" + this.props.location_item.id}>
               {this.props.location_item.name}
             </a>
           </li>

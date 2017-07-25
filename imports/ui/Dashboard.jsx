@@ -5,16 +5,16 @@ import { Link } from 'react-router';
 
 class Quest extends Component {
 
+//  <img src = {this.props.quest.img} alt={this.props.quest.name}/>
   render(){
     return (
-      <div>
-        <li key={this.props.quest._id}>
-          <a href = {"/map/" + this.props.quest._id}>
-            {this.props.quest.name} : {this.props.quest.duration} min
-          </a>
-          <img src = {this.props.quest.img} alt={this.props.quest.name}/>
-        </li>
-      </div>
+      <a className="quest quest--new" key={this.props.quest._id}  href = {"/map/" + this.props.quest._id}>
+        <span className="quest__time">{this.props.quest.duration}</span>
+        <h3 className="quest__title">{this.props.quest.name}</h3>
+        <span className="quest__progress">
+          <span className="quest__progress-bar"></span>
+        </span>
+      </a>
     )
   }
 
@@ -24,12 +24,12 @@ class Dashboard extends Component {
 
   render(){
     return(
-      <ul>
+      <section className = "quests quests--active">
         {this.props.quests.map(function(quest){
           return <Quest quest={quest}/>
         })
         }
-      </ul>
+      </section>
     )
   }
 

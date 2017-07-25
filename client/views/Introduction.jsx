@@ -6,24 +6,34 @@ import { createContainer } from 'meteor/react-meteor-data';
 class Introduction extends Component {
 
   render(){
-    if(!this.props.location_item)
+    if(!this.props.ret)
       return null;
-    else
+    else{
       return (
         <div>
-        {this.props.location_item.name}
+        {this.props.ret[0].description}
           <button>Start conversation</button>
           <button>Go to vocabulary</button>
         </div>
       )
+    }
   }
 
 }
 
-export default IntroductionContainer = createContainer( props => {
+export default createContainer( props => {
+  var loc_it = dbQuests.findOne(
+    {"locations.id": props.location_id},
+    {fields: {"locations": true}}
+  );
+
+  var ret = null;
+  if(loc_it) {
+    ret = loc_it['locations'].filter(obj => {return obj.id === props.location_id});
+  }
+
   return {
-    location_item: dbQuests.findOne(
-       {"_id": props.city_id}
-    )
+    ret
   };
+
 }, Introduction)

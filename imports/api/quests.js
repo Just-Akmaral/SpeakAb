@@ -9,6 +9,7 @@ export const dbQuests = new Mongo.Collection('quests');
 //   img: "/images/New-York.jpg",
 //   locations: [
 //     {
+//       id: "New-York_airport",
 //       name: "airport",
 //       img: "url-img",
 //       vocabulary: [{text: "aisle"},{text: "aisle"}],
@@ -16,6 +17,7 @@ export const dbQuests = new Mongo.Collection('quests');
 //       conversation: "right now conversation"
 //     },
 //     {
+//       id: "New-York_TimeSquare",
 //       name: "Time Square",
 //       img: "url-img",
 //       vocabulary: [{text: "aisle"},{text: "aisle"}],
