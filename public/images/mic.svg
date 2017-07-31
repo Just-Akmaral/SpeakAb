@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="19px" height="26px" viewBox="0 0 19 26" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 45.2 (43514) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="app-4" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="task-chat-first-text" transform="translate(-504.000000, -518.000000)" fill-rule="nonzero" fill="#FFFFFF">
+            <g id="Group-5" transform="translate(257.000000, 359.000000)">
+                <g id="Group" transform="translate(138.000000, 0.000000)">
+                    <g id="Group-9" transform="translate(90.000000, 145.000000)">
+                        <g id="Group-3">
+                            <path d="M28.25,30.4561404 C30.4357143,30.4561404 32.1071429,28.745614 32.1071429,26.5087719 L32.1071429,18.6140351 C32.1071429,16.377193 30.4357143,14.6666667 28.25,14.6666667 C26.0642857,14.6666667 24.3928571,16.377193 24.3928571,18.6140351 L24.3928571,26.5087719 C24.3928571,28.745614 26.0642857,30.4561404 28.25,30.4561404 Z M35.0642857,26.5087719 C35.0642857,30.4561404 31.85,33.2192982 28.25,33.2192982 C24.65,33.2192982 21.4357143,30.4561404 21.4357143,26.5087719 L19.25,26.5087719 C19.25,30.9824561 22.7214286,34.6666667 26.9642857,35.3245614 L26.9642857,39.6666667 L29.5357143,39.6666667 L29.5357143,35.3245614 C33.7785714,34.6666667 37.25,30.9825077 37.25,26.5087719 L35.0642857,26.5087719 L35.0642857,26.5087719 Z" id="Shape"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

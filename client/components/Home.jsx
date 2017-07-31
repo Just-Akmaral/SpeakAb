@@ -21,7 +21,7 @@ class Home extends Component {
   showUserNav_login() {
         return (
           <div className="header__profile">
-            <img src="images/profile-pic.png" alt="profile-pic" className="header__pic"/>
+            <img src="/images/profile-pic.png" alt="profile-pic" className="header__pic"/>
                 <span className="header__name">{currentUser.username}</span>
                 <ul className="header__menu">
                   <li><a href="/logout">Выйти</a></li>

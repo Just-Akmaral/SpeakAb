@@ -5,7 +5,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 class Locations extends Component {
   render(){
       return (
-        <div>
+        <div className="container clearfix">
           <li>
             <a href = {"/Introduction/" + this.props.location_item.id}>
               {this.props.location_item.name}
