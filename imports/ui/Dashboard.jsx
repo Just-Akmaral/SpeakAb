@@ -5,7 +5,6 @@ import { Link } from 'react-router';
 
 class Quest extends Component {
 
-//  <img src = {this.props.quest.img} alt={this.props.quest.name}/>
   render(){
     return (
       <a className="quest quest--new" key={this.props.quest._id}  href = {"/map/" + this.props.quest._id}>

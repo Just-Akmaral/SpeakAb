@@ -8,6 +8,18 @@ import App from '../imports/ui/App.jsx';
 
 import Map from './views/Map.jsx';
 import Introduction from './views/Introduction.jsx';
+import Vocabulary from './views/Vocabulary.jsx';
+
+
+FlowRouter.route('/Vocabulary/:location_id', {
+  name: 'Vocabulary',
+  action(params) {
+    mount(Home, {
+      content: <Vocabulary location_id = {params.location_id}/>
+    });
+  }
+});
+
 
 FlowRouter.route('/Introduction/:location_id', {
   name: 'Introduction',
