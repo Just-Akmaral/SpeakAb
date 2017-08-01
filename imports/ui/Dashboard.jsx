@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { dbQuests } from '/imports/api/quests.js';
 import { createContainer } from 'meteor/react-meteor-data';
-import { Link } from 'react-router';
+
 
 class Quest extends Component {
 

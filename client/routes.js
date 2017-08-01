@@ -9,7 +9,16 @@ import App from '../imports/ui/App.jsx';
 import Map from './views/Map.jsx';
 import Introduction from './views/Introduction.jsx';
 import Vocabulary from './views/Vocabulary.jsx';
+import Conversation from './views/Conversation.jsx';
 
+FlowRouter.route('/Conversation/:location_id', {
+  name: 'Conversation',
+  action(params) {
+    mount(Home, {
+      content: <Conversation location_id = {params.location_id}/>
+    });
+  }
+});
 
 FlowRouter.route('/Vocabulary/:location_id', {
   name: 'Vocabulary',

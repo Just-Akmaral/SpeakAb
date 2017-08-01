@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor';
-import {dbQuests} from '../imports/api/quests.js';
+import { dbQuests, dbQuestsScenario } from '../imports/api/quests.js';
 
 Meteor.publish("userData", function () {
         if (this.userId) {
@@ -10,4 +10,8 @@ Meteor.publish("userData", function () {
 
 Meteor.publish("quests", function () {
         return dbQuests.find({});
+});
+
+Meteor.publish("scenario", function () {
+        return dbQuestsScenario.find({});
 });

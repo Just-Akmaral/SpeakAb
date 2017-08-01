@@ -39,7 +39,7 @@ class Introduction extends Component {
               <section className = "location clearfix">
                 <p className = "location__description">{this.props.ret[0].description}</p>
                 <div className = "">
-                  <a href = "#" className = "btn btn-primary" action={this.checkText()}>Start conversation</a>
+                  <a href = {"/Conversation/" + this.props.location_id} className = "btn btn-primary" action={this.checkText()}>Start conversation</a>
                   <a href = {"/Vocabulary/" + this.props.location_id} className = "btn btn-secondary">Show vocabulary</a>
                 </div>
               </section>
