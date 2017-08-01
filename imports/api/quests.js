@@ -3,11 +3,11 @@ import { Mongo } from 'meteor/mongo';
 export const dbQuests = new Mongo.Collection('quests');
 export const dbQuestsScenario = new Mongo.Collection('scenario');
 
-
+//
 // dbQuestsScenario.insert(
 //   {
 //     name: "New-York_airport",
-//     congratulation: "You are so good",
+//     congratulation: "You was so good in New-York_airport",
 //     tasks: [
 //       {
 //         phrase: "sorry i don't understand"
@@ -17,6 +17,21 @@ export const dbQuestsScenario = new Mongo.Collection('scenario');
 //       },
 //       {
 //         phrase: "where can i buy a ticket"
+//       }
+//     ]
+//   },
+//   {
+//     name: "New-York_TimeSquare",
+//     congratulation: "You was so good in New-York_TimeSquare",
+//     tasks: [
+//       {
+//         phrase: "sorry i don't understand"
+//       },
+//       {
+//         phrase: "thank you"
+//       },
+//       {
+//         phrase: "where can i buy a chicken"
 //       }
 //     ]
 //   }

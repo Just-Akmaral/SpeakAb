@@ -1,11 +1,22 @@
 import React, { Component } from 'react';
-import { dbQuestsScenario } from '/imports/api/quests.js';
+import { dbQuests, dbQuestsScenario } from '/imports/api/quests.js';
 import { createContainer } from 'meteor/react-meteor-data';
+
 
 
 class Conversation extends Component {
 
+  getPhrases(){
+
+  let items = this.props.conversation.tasks[0].phrase;
+
+  console.log(items);
+  let arr =[items];
+    return arr;
+  }
+
   testSpeech(){
+
    var phrasePara = this.refs.phrase;
    var resultPara = this.refs.result;
    var diagnosticPara = this.refs.output;
@@ -15,14 +26,8 @@ class Conversation extends Component {
    var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList || mozSpeechRecognitionList || msSpeechRecognitionList;
    var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent || mozSpeechRecognitionEvent || msSpeechRecognitionEvent;
 
-   var phrases = [
-     "sorry i don't understand",
-     "thank you",
-     "where i can buy a ticket",
-     "have a good day"
-   ];
+   var phrases = this.getPhrases();
 
-    console.log(this.props.scenarios);
     console.log("123");
 
     testBtn.textContent = 'wait a minute';
@@ -87,11 +92,9 @@ class Conversation extends Component {
   render(){
       return (
         <div className="container clearfix">
-
           <p ref="phrase">Phrase</p>
           <p ref="result">Result</p>
           <p ref="output">Diagnostic messages</p>
-
           <button ref="run" className="run" onClick={this.run.bind(this)}>Run</button>
         </div>
       )
@@ -99,8 +102,13 @@ class Conversation extends Component {
 
 }
 
-export default createContainer(() => {
+export default createContainer(props => {
+
+  let conversation = dbQuestsScenario.findOne(
+    {"name": props.location_id}
+  );
+
   return {
-    scenarios: dbQuestsScenario.find({}).fetch()
+    conversation
   };
 }, Conversation)

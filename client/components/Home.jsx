@@ -46,6 +46,9 @@ class Home extends Component {
 export default createContainer(() => {
     let subscription = Meteor.subscribe("userData");
     let sub = subscription.ready();
+
     Meteor.subscribe("quests");
+    Meteor.subscribe("scenario");
+
     return { sub: sub };
 }, Home);
