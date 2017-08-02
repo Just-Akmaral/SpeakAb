@@ -7,6 +7,8 @@
   "dependencies": {
     "babel-runtime": "^6.20.0",
     "bcrypt": "^1.0.2",
+    "bindings": "^1.3.0",
+    "browserify": "^14.4.0",
     "jaccard-similarity-sentences": "^1.0.2",
     "meteor-node-stubs": "~0.2.4",
     "react": "^15.6.1",
@@ -14,6 +16,7 @@
     "react-dom": "^15.6.1",
     "react-mounter": "^1.2.0",
     "react-router": "^4.1.2",
-    "sentence-similarity": "^1.0.7"
+    "sentence-similarity": "^1.0.7",
+    "string-similarity": "^1.2.0"
   }
 }

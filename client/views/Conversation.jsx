@@ -7,11 +7,10 @@ import { createContainer } from 'meteor/react-meteor-data';
 class Conversation extends Component {
 
   getPhrases(){
-
-  let items = this.props.conversation.tasks[0].phrase;
-
-  console.log(items);
-  let arr =[items];
+  //  let items = this.props.conversation.tasks[0].phrase;
+    let items = ["how are you"];
+//    console.log(items);
+    let arr = items;
     return arr;
   }
 
@@ -28,8 +27,6 @@ class Conversation extends Component {
 
    var phrases = this.getPhrases();
 
-    console.log("123");
-
     testBtn.textContent = 'wait a minute';
     var phrase = phrases[this.randomPhrase(phrases)];
 
@@ -44,7 +41,7 @@ class Conversation extends Component {
     recognition.grammars = speechRecognitionList;
     recognition.lang = 'en-US';
     recognition.interimResults = false;
-    recognition.maxAlternatives = 5;
+    recognition.maxAlternatives = 3;
 
     recognition.start();
 
@@ -55,11 +52,13 @@ class Conversation extends Component {
       speechResult = speechResult.toUpperCase();
       phrase = phrase.toUpperCase();
 
-      if(speechResult === phrase) {
-        resultPara.textContent = 'I heard the correct phrase!';
+      var stringSimilarity = require('string-similarity');
+      var res = stringSimilarity.compareTwoStrings(speechResult, phrase);
+      console.log(speechResult);
+      resultPara.textContent = res;
+      if( res >= 0.98) {
         resultPara.style.background = 'lime';
       } else {
-        resultPara.textContent = 'That didn\'t sound right.';
         resultPara.style.background = 'red';
       }
 

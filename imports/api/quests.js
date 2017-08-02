@@ -36,7 +36,7 @@ export const dbQuestsScenario = new Mongo.Collection('scenario');
 //     ]
 //   }
 // );
-
+//
 //
 // dbQuests.insert(
 //   {
