@@ -12,7 +12,6 @@ export default class LoginForm extends Component {
             <input placeholder="Email" type="email" id="email"/>
           	<input placeholder="Password" type="password" id="password"/>
           	<button type="submit" className="btn btn-primary">{this.props.submitBtnLabel}</button>
-            <a href="#" className="login__forgot">Forgot password?</a>
       		</form>
         )
       }

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="21px" height="21px" viewBox="0 0 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>facebook</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="landing" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="start" transform="translate(-742.000000, -3242.000000)" fill-rule="nonzero">
+            <g id="footer" transform="translate(262.000000, 3242.000000)">
+                <g id="facebook" transform="translate(480.000000, 0.000000)">
+                    <circle id="Oval" fill="#B0BCC2" cx="10.425292" cy="10.425292" r="10.425292"></circle>
+                    <path d="M13.0462035,10.8333982 L11.1859381,10.8333982 L11.1859381,17.6485487 L8.36747788,17.6485487 L8.36747788,10.8333982 L7.02700885,10.8333982 L7.02700885,8.43828319 L8.36747788,8.43828319 L8.36747788,6.88837168 C8.36747788,5.7800177 8.8939646,4.04445133 11.2110265,4.04445133 L13.2987611,4.05318584 L13.2987611,6.3780531 L11.7839735,6.3780531 C11.5355044,6.3780531 11.1861239,6.50219469 11.1861239,7.0309115 L11.1861239,8.44051327 L13.2924425,8.44051327 L13.0462035,10.8333982 Z" id="Shape" fill="#FFFFFF"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

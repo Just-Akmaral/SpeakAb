@@ -8,10 +8,10 @@ class Conversation extends Component {
 
   getPhrases(){
 
-  let items = this.props.conversation.tasks[0].phrase;
+//  let items = this.props.conversation.tasks[0].phrase;
 
-  console.log(items);
-  let arr =[items];
+  //console.log(items);
+  let arr = ["Thank you"];
     return arr;
   }
 

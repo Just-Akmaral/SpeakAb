@@ -4,17 +4,16 @@ import React, { Component } from 'react';
 export default class AppHeader extends Component {
 
   static defaultProps = {
-      appTitle: "",
+      appClass: '',
       userNav: null
     }
 
 render() {
     return (
-        <header className = "header">
-            <div className = "container clearfix">
-              <a href="/Dashboard" className="header__logo">{this.props.appTitle}</a>
+        <header className = {'header ' + this.props.appClass}>
+          <div className = "container clearfix">
               {this.props.userNav}
-            </div>
+          </div>
         </header>
     )
   }

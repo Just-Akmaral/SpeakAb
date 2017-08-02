@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { dbQuests } from '/imports/api/quests.js';
 import { createContainer } from 'meteor/react-meteor-data';
-
+import ReactPlayer from 'react-player';
 
 
 class Introduction extends Component {
@@ -38,6 +38,7 @@ class Introduction extends Component {
           <a href="#" className = "link-back">back to the map</a>
               <section className = "location clearfix">
                 <p className = "location__description">{this.props.ret[0].description}</p>
+                <div><ReactPlayer url='https://www.youtube.com/watch?v=y-xpjDLdr4w'/></div>
                 <div className = "">
                   <a href = {"/Conversation/" + this.props.location_id} className = "btn btn-primary" action={this.checkText()}>Start conversation</a>
                   <a href = {"/Vocabulary/" + this.props.location_id} className = "btn btn-secondary">Show vocabulary</a>
