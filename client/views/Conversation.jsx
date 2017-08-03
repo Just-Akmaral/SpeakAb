@@ -32,43 +32,48 @@ class Hints extends Component{
 }
 
 class User extends Component{
-
     constructor(props) {
       super(props);
       this.state = {curNumPhrase: 0, isEnd: false};
-
     }
     compareSentences(){
       var stringSimilarity = require('string-similarity');
       var res = stringSimilarity.compareTwoStrings(speechResult, phrase);
     }
-
     getPhrases(){
       //  let items = this.props.conversation.tasks[0].phrase;
       //console.log(items);
       let arr = ["Thank you", "Hello", "No"];
       return arr;
     }
-
     nextPhrase(arr) {
       var number;
-      if (this.state.curNumPhrase <= arr.length){
+      console.log(this.state.curNumPhrase + " " + (arr.length-1));
+      if (this.state.curNumPhrase < (arr.length-1)){
         number = this.state.curNumPhrase;
         this.setState({curNumPhrase: 1 + this.state.curNumPhrase});
       } else {
+        console.log("последняя фраза");
+        number = this.state.curNumPhrase;
         this.setState({isEnd: true});
       }
-      console.log(number);
       return number;
     }
-
     testSpeech(){
+
       var phrasePara = this.refs.phrase;
       var resultPara = this.refs.result;
       var testBtn = this.refs.run;
 
-      testBtn.textContent = 'wait a sec';
+      phrasePara.textContent = '';
+      testBtn.disabled = true;
+      testBtn.textContent = 'wait a minute';
+
+      var phrases = this.getPhrases();
+      var phrase = phrases[this.nextPhrase(phrases)];
+      phrasePara.textContent = phrase;
       resultPara.textContent = 'your result';
+      resultPara.style.background = 'rgba(0,0,0,0.2)';
 
 
       var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition || mozSpeechRecognition || msSpeechRecognition;
@@ -80,9 +85,6 @@ class User extends Component{
       recognition.interimResults = false;
       recognition.maxAlternatives = 5;
 
-      var phrases = this.getPhrases();
-      var phrase = phrases[this.nextPhrase(phrases)];
-      phrasePara.textContent = phrase;
 
       var grammar = '#JSGF V1.0; grammar phrase; public <phrase> = ' + phrase +';';
       speechRecognitionList.addFromString(grammar, 1);
@@ -97,41 +99,45 @@ class User extends Component{
 
         if(speechResult === phrase) {
             resultPara.textContent = "Great";
-            testBtn.style.background = 'lime';
+            resultPara.style.background = 'lime';
         } else {
             resultPara.textContent = "You said: " + speechResult;
-            testBtn.style.background = 'red';
+            resultPara.style.background = 'red';
         }
       }
 
       recognition.onspeechend = function() {
         recognition.stop();
-        //testBtn.disabled = false;
-        testBtn.textContent = 'Next';
+        testBtn.disabled = false;
+        testBtn.textContent = 'Start new test';
       }
 
       recognition.onerror = function(event) {
-        //  testBtn.disabled = false;
+        testBtn.disabled = false;
         alert('Error occurred in recognition: ' + event.error);
+        testBtn.textContent = 'Start new test';
       }
 
     }
 
     run(event){
       event.preventDefault();
+      console.log(this.state.isEnd);
       if (this.state.isEnd !== true){
         this.testSpeech();
       } else {
-        alert("The End");
+        console.log("end");
+        let par = { location_id: this.props.loc};
+
+        FlowRouter.go('Congratulation', par);
       }
-      this.testSpeech();
     }
 
   render() {
     return(
       <div>
-        <p ref="phrase">Phrase</p>
-        <p ref="result"> </p>
+        <p ref="phrase"></p>
+        <p ref="result"></p>
         <button ref="run" className="run" onClick={this.run.bind(this)}>Nice record button</button>
       </div>
     )
@@ -148,7 +154,7 @@ class Conversation extends Component {
           <p>Ask about smth</p>
           <p>Use these words</p>
           <Hints />
-          <User />
+          <User loc = {this.props.conv.name}/>
         </div>
       )
     }
@@ -160,11 +166,11 @@ class Conversation extends Component {
 
 export default createContainer(props => {
 
-  let conversation = dbQuestsScenario.findOne(
+  let conv = dbQuestsScenario.findOne(
     {"name": props.location_id}
   );
 
   return {
-    conversation
+    conv
   };
 }, Conversation)

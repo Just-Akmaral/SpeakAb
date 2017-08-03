@@ -6,10 +6,10 @@ class Word extends Component {
 
   render(){
     return (
-      <div className="container clearfix">
-        <li>
-          {this.props.word.english} - {this.props.word.russian}
-        </li>
+      <div className = "vocabulary__card clearfix">
+        <button type = "button" name = "button" className = "btn-sound"></button>
+        <span className = "word">{this.props.word.english}</span>
+        <span className = "translation">{this.props.word.russian}</span>
       </div>
     )
   }
@@ -26,11 +26,12 @@ class Vocabulary extends Component {
         return (
           <div className="container clearfix">
             <a href="#" className = "link-back">back to the map</a>
-            <ul>
+            <section className="vocabulary">
+              <h1>Remember these words</h1>
               {this.props.ret[0].vocabulary.map((word) =>
                 <Word word = {word} />
               )}
-            </ul>
+            </section>
           </div>
           )
         }

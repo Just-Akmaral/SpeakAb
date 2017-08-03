@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { dbQuests } from '/imports/api/quests.js';
+import {  dbQuestsScenario  } from '/imports/api/quests.js';
 import { createContainer } from 'meteor/react-meteor-data';
 
 
