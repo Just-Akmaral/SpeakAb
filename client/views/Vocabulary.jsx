@@ -18,25 +18,28 @@ class Word extends Component {
 
 
 class Vocabulary extends Component {
-
   render(){
-    if(!this.props.ret)
-      return null;
-    else{
-      return (
-        <div className="container clearfix">
-          <a href="#" className = "link-back">back to the map</a>
-          <ul>
-            {this.props.ret[0].vocabulary.map((word) =>
-              <Word word = {word} />
-            )}
-          </ul>
-        </div>
-        )
+    if (Meteor.user()) {
+      if (!this.props.ret)
+        {return null;}
+      else {
+        return (
+          <div className="container clearfix">
+            <a href="#" className = "link-back">back to the map</a>
+            <ul>
+              {this.props.ret[0].vocabulary.map((word) =>
+                <Word word = {word} />
+              )}
+            </ul>
+          </div>
+          )
+        }
       }
-    }
-
+      else {
+          FlowRouter.go('login');
+      }
   }
+}
 
 export default createContainer(props => {
   let loc_it = dbQuests.findOne(

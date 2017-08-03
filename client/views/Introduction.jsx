@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { dbQuests } from '/imports/api/quests.js';
 import { createContainer } from 'meteor/react-meteor-data';
-import ReactPlayer from 'react-player';
 
 
 class Introduction extends Component {
@@ -30,25 +29,26 @@ class Introduction extends Component {
   }
 
   render(){
-    if(!this.props.ret)
-      return null;
-    else{
-      return (
-        <div className="container clearfix">
-          <a href="#" className = "link-back">back to the map</a>
-              <section className = "location clearfix">
-                <p className = "location__description">{this.props.ret[0].description}</p>
-                <div><ReactPlayer url='https://www.youtube.com/watch?v=y-xpjDLdr4w'/></div>
-                <div className = "">
-                  <a href = {"/Conversation/" + this.props.location_id} className = "btn btn-primary" action={this.checkText()}>Start conversation</a>
-                  <a href = {"/Vocabulary/" + this.props.location_id} className = "btn btn-secondary">Show vocabulary</a>
-                </div>
-              </section>
-        </div>
-      )
+    if (Meteor.user()) {
+      if (!this.props.ret) {return null;}
+        else {
+          return (
+            <div className="container clearfix">
+              <a href="#" className = "link-back">back to the map</a>
+                  <section className = "location clearfix">
+                    <p className = "location__description">{this.props.ret[0].description}</p>
+                    <div className = "">
+                      <a href = {"/Conversation/" + this.props.location_id} className = "btn btn-primary" action={this.checkText()}>Start conversation</a>
+                      <a href = {"/Vocabulary/" + this.props.location_id} className = "btn btn-secondary">Show vocabulary</a>
+                    </div>
+                  </section>
+            </div>
+          )
+        }
+   } else {
+          FlowRouter.go('login');
     }
   }
-
 }
 
 export default createContainer( props => {

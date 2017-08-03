@@ -10,6 +10,16 @@ import Map from './views/Map.jsx';
 import Introduction from './views/Introduction.jsx';
 import Vocabulary from './views/Vocabulary.jsx';
 import Conversation from './views/Conversation.jsx';
+import Congratulation from './views/Congratulation.jsx';
+
+FlowRouter.route('/Congratulation/:location_id', {
+  name: 'Congratulation',
+  action(params) {
+    mount(Home, {
+      content: <Congratulation location_id = {params.location_id}/>
+    });
+  }
+});
 
 FlowRouter.route('/Conversation/:location_id', {
   name: 'Conversation',
@@ -29,7 +39,6 @@ FlowRouter.route('/Vocabulary/:location_id', {
   }
 });
 
-
 FlowRouter.route('/Introduction/:location_id', {
   name: 'Introduction',
   action(params) {
@@ -38,7 +47,6 @@ FlowRouter.route('/Introduction/:location_id', {
     });
   }
 });
-
 
 FlowRouter.route('/map/:quest_id', {
   name: 'map',
@@ -49,14 +57,12 @@ FlowRouter.route('/map/:quest_id', {
   }
 });
 
-
 FlowRouter.route('/', {
   name: 'home',
   action: function() {
      mount(Home, {
-       content: <Homepage />
+       content:  <Homepage />
      });
-
   }
 });
 
@@ -86,7 +92,6 @@ FlowRouter.route('/Dashboard', {
     });
   }
 });
-
 
 FlowRouter.route('/logout', {
   name: 'logout',

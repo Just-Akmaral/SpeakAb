@@ -1,105 +1,161 @@
 import React, { Component } from 'react';
 import { dbQuests, dbQuestsScenario } from '/imports/api/quests.js';
 import { createContainer } from 'meteor/react-meteor-data';
+import ReactPlayer from 'react-player';
 
 
-
-class Conversation extends Component {
-
-  getPhrases(){
-
-//  let items = this.props.conversation.tasks[0].phrase;
-
-  //console.log(items);
-  let arr = ["Thank you"];
-    return arr;
+class Video extends Component{
+  render() {//<ReactPlayer url='https://www.youtube.com/watch?v=y-xpjDLdr4w'/>
+    return(
+      <div>Video here</div>
+    )
   }
+}
 
-  testSpeech(){
+class Audio extends Component{
+  render() {
+    return(
+      <div>Audio here</div>
+    )
+  }
+}
 
-   var phrasePara = this.refs.phrase;
-   var resultPara = this.refs.result;
-   var diagnosticPara = this.refs.output;
-   var testBtn = this.refs.run;
+class Hints extends Component{
+  render(){
+    return(
+      <ul>
+        <li>excuse me</li>
+        <li>terminal</li>
+      </ul>
+    )
+  }
+}
 
-   var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition || mozSpeechRecognition || msSpeechRecognition;
-   var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList || mozSpeechRecognitionList || msSpeechRecognitionList;
-   var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent || mozSpeechRecognitionEvent || msSpeechRecognitionEvent;
+class User extends Component{
 
-   var phrases = this.getPhrases();
+    constructor(props) {
+      super(props);
+      this.state = {curNumPhrase: 0, isEnd: false};
 
-    console.log("123");
+    }
+    compareSentences(){
+      var stringSimilarity = require('string-similarity');
+      var res = stringSimilarity.compareTwoStrings(speechResult, phrase);
+    }
 
-    testBtn.textContent = 'wait a minute';
-    var phrase = phrases[this.randomPhrase(phrases)];
+    getPhrases(){
+      //  let items = this.props.conversation.tasks[0].phrase;
+      //console.log(items);
+      let arr = ["Thank you", "Hello", "No"];
+      return arr;
+    }
 
-    phrasePara.textContent = phrase;
-    resultPara.textContent = 'your result';
-    diagnosticPara.textContent = '...diagnostic messages';
-
-    var grammar = '#JSGF V1.0; grammar phrase; public <phrase> = ' + phrase +';';
-    var recognition = new SpeechRecognition();
-    var speechRecognitionList = new SpeechGrammarList();
-    speechRecognitionList.addFromString(grammar, 1);
-    recognition.grammars = speechRecognitionList;
-    recognition.lang = 'en-US';
-    recognition.interimResults = false;
-    recognition.maxAlternatives = 5;
-
-    recognition.start();
-
-    recognition.onresult = function(event) {
-
-      var speechResult = event.results[0][0].transcript;
-      diagnosticPara.textContent = 'Speech received: ' + speechResult + '.';
-      speechResult = speechResult.toUpperCase();
-      phrase = phrase.toUpperCase();
-
-      if(speechResult === phrase) {
-        resultPara.textContent = 'I heard the correct phrase!';
-        resultPara.style.background = 'lime';
+    nextPhrase(arr) {
+      var number;
+      if (this.state.curNumPhrase <= arr.length){
+        number = this.state.curNumPhrase;
+        this.setState({curNumPhrase: 1 + this.state.curNumPhrase});
       } else {
-        resultPara.textContent = 'That didn\'t sound right.';
-        resultPara.style.background = 'red';
+        this.setState({isEnd: true});
+      }
+      console.log(number);
+      return number;
+    }
+
+    testSpeech(){
+      var phrasePara = this.refs.phrase;
+      var resultPara = this.refs.result;
+      var testBtn = this.refs.run;
+
+      testBtn.textContent = 'wait a sec';
+      resultPara.textContent = 'your result';
+
+
+      var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition || mozSpeechRecognition || msSpeechRecognition;
+      var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList || mozSpeechRecognitionList || msSpeechRecognitionList;
+      var SpeechRecognitionEvent = SpeechRecognitionEvent || webkitSpeechRecognitionEvent || mozSpeechRecognitionEvent || msSpeechRecognitionEvent;
+      var recognition = new SpeechRecognition();
+      var speechRecognitionList = new SpeechGrammarList();
+      recognition.lang = 'en-US';
+      recognition.interimResults = false;
+      recognition.maxAlternatives = 5;
+
+      var phrases = this.getPhrases();
+      var phrase = phrases[this.nextPhrase(phrases)];
+      phrasePara.textContent = phrase;
+
+      var grammar = '#JSGF V1.0; grammar phrase; public <phrase> = ' + phrase +';';
+      speechRecognitionList.addFromString(grammar, 1);
+      recognition.grammars = speechRecognitionList;
+
+      recognition.start();
+
+      recognition.onresult = function(event) {
+        var speechResult = event.results[0][0].transcript;
+        speechResult = speechResult.toUpperCase();
+        phrase = phrase.toUpperCase();
+
+        if(speechResult === phrase) {
+            resultPara.textContent = "Great";
+            testBtn.style.background = 'lime';
+        } else {
+            resultPara.textContent = "You said: " + speechResult;
+            testBtn.style.background = 'red';
+        }
+      }
+
+      recognition.onspeechend = function() {
+        recognition.stop();
+        //testBtn.disabled = false;
+        testBtn.textContent = 'Next';
+      }
+
+      recognition.onerror = function(event) {
+        //  testBtn.disabled = false;
+        alert('Error occurred in recognition: ' + event.error);
       }
 
     }
 
-    recognition.onspeechend = function() {
-      recognition.stop();
-      //testBtn.disabled = false;
-      testBtn.textContent = 'Record';
+    run(event){
+      event.preventDefault();
+      if (this.state.isEnd !== true){
+        this.testSpeech();
+      } else {
+        alert("The End");
+      }
+      this.testSpeech();
     }
 
-    recognition.onerror = function(event) {
-      //testBtn.disabled = false;
-      testBtn.textContent = 'Record';
-      diagnosticPara.textContent = 'Error occurred in recognition: ' + event.error;
-    }
-
+  render() {
+    return(
+      <div>
+        <p ref="phrase">Phrase</p>
+        <p ref="result"> </p>
+        <button ref="run" className="run" onClick={this.run.bind(this)}>Nice record button</button>
+      </div>
+    )
   }
+}
 
-  randomPhrase(arr) {
-    var number = Math.floor(Math.random() * arr.length);
-    return number;
-  }
-
-  run(event){
-    event.preventDefault();
-    this.testSpeech();
-  }
-
+class Conversation extends Component {
   render(){
+    if (Meteor.user()) {
       return (
         <div className="container clearfix">
-          <p ref="phrase">Phrase</p>
-          <p ref="result">Result</p>
-          <p ref="output">Diagnostic messages</p>
-          <button ref="run" className="run" onClick={this.run.bind(this)}>Run</button>
+          <Video />
+          <Audio />
+          <p>Ask about smth</p>
+          <p>Use these words</p>
+          <Hints />
+          <User />
         </div>
       )
+    }
+    else {
+      FlowRouter.go('login');
+    }
   }
-
 }
 
 export default createContainer(props => {

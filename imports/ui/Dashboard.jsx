@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { dbQuests } from '/imports/api/quests.js';
 import { createContainer } from 'meteor/react-meteor-data';
-
+import { Meteor } from 'meteor/meteor';
 
 class Quest extends Component {
-
   render(){
     return (
       <a className="quest quest--new" key={this.props.quest._id}  href = {"/map/" + this.props.quest._id}>
@@ -16,22 +15,23 @@ class Quest extends Component {
       </a>
     )
   }
-
 }
 
 class Dashboard extends Component {
-
   render(){
-    return(
-      <section className = "quests quests--active">
-        {this.props.quests.map(function(quest){
-          return <Quest quest={quest}/>
-        })
-        }
-      </section>
-    )
+    if (Meteor.user()) {
+      return(
+        <section className = "quests quests--active">
+          {this.props.quests.map(function(quest){
+            return <Quest quest={quest}/>
+          })
+          }
+        </section>
+      )
+      } else {
+        FlowRouter.go('login');
+      }
   }
-
 }
 
 export default DashboardContainer = createContainer(() => {

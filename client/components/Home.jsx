@@ -58,7 +58,7 @@ class Home extends Component {
         <div>
           <AppHeader appClass = {currentUser ? "header--app": "header--lp"} userNav = {currentUser ? this.showUserNav_login() : this.showUserNav()} />
              {this.props.content}
-       </div>
+        </div>
       );
    }
 }

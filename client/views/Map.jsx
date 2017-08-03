@@ -20,18 +20,22 @@ class Locations extends Component {
 class Map extends Component {
 
   render(){
-    if(!this.props.city)
-      return null;
-    else
-      return (
-        <ul>
-          {this.props.city.locations.map((loc) =>
-            <Locations city_id = {this.props.city._id} location_item = {loc} />
-          )}
-        </ul>
-      )
+    if (Meteor.user()) {
+      if (!this.props.city) {return null;}
+        else {
+          return (
+            <ul>
+              {this.props.city.locations.map((loc) =>
+                <Locations city_id = {this.props.city._id} location_item = {loc} />
+              )}
+            </ul>
+          )
+        }
+      }
+      else {
+          FlowRouter.go('login');
+      }
   }
-
 }
 
 export default MapContainer = createContainer( props => {
