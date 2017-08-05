@@ -20,21 +20,21 @@ class Locations extends Component {
 class Map extends Component {
 
   render(){
-    if (Meteor.user()) {
+  //  if (Meteor.user()) {
       if (!this.props.city) {return null;}
         else {
           return (
             <ul>
               {this.props.city.locations.map((loc) =>
-                <Locations city_id = {this.props.city._id} location_item = {loc} />
+                <Locations key = {loc.id} location_item = {loc} />
               )}
             </ul>
           )
         }
-      }
+   /*   }
       else {
           FlowRouter.go('login');
-      }
+      }*/
   }
 }
 

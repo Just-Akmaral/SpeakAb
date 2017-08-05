@@ -6,7 +6,7 @@ export default class LoginForm extends Component {
   static defaultProps = {
       submitBtnLabel: "Sign in"
   }
-  	render() {
+  render() {
     	return (
       		<form onSubmit={this.props.submitAction}>
             <input placeholder="Email" type="email" id="email"/>
@@ -15,9 +15,9 @@ export default class LoginForm extends Component {
       		</form>
         )
       }
-    };
+  };
 
 
-    LoginForm.propTypes = {
+  LoginForm.propTypes = {
     	submitAction: PropTypes.func.isRequired
-    };
+  };

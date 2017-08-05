@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { dbQuests } from '/imports/api/quests.js';
+import { dbQuestsScenario } from '/imports/api/quests.js';
 import { createContainer } from 'meteor/react-meteor-data';
 
 
@@ -13,11 +13,10 @@ class Congratulation extends Component {
         <div className="container clearfix">
           {this.props.conversation.congratulation}
         </div>
-        )
-      }
+        );
     }
-
   }
+}
 
 export default createContainer(props => {
   let conversation = dbQuestsScenario.findOne(

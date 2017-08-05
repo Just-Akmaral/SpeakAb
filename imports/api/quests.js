@@ -4,38 +4,46 @@ export const dbQuests = new Mongo.Collection('quests');
 export const dbQuestsScenario = new Mongo.Collection('scenario');
 
 //
-// dbQuestsScenario.insert(
-//   {
-//     name: "New-York_airport",
-//     congratulation: "You was so good in New-York_airport",
-//     tasks: [
-//       {
-//         phrase: "sorry i don't understand"
-//       },
-//       {
-//         phrase: "thank you"
-//       },
-//       {
-//         phrase: "where can i buy a ticket"
-//       }
-//     ]
-//   },
-//   {
-//     name: "New-York_TimeSquare",
-//     congratulation: "You was so good in New-York_TimeSquare",
-//     tasks: [
-//       {
-//         phrase: "sorry i don't understand"
-//       },
-//       {
-//         phrase: "thank you"
-//       },
-//       {
-//         phrase: "where can i buy a chicken"
-//       }
-//     ]
-//   }
-// );
+ /*dbQuestsScenario.insert(
+   {
+    name: "New-York_airport",
+    congratulation: "You was so good in New-York_airport",
+    tasks: [
+       {
+         user_phrase: "sorry i don't understand",
+         bot_phrase: "do you speak english?"
+       },
+       {
+         user_phrase: "hello",
+         bot_phrase: "hi"
+       },
+       {
+         user_phrase: "i don't know",
+         bot_phrase: "where can i buy a ticket"
+       }
+     ],
+    video: "video"
+   },
+   {
+    name: "New-York_TimeSquare",
+    congratulation: "You was so good in New-York_TimeSquare",
+    tasks: [
+       {
+         user_phrase: "sorry i don't understand",
+         bot_phrase: "do you speak english?"
+       },
+       {
+         user_phrase: "hello",
+         bot_phrase: "hi"
+       },
+       {
+         user_phrase: "i don't know",
+         bot_phrase: "where can i buy a ticket"
+       }
+     ],
+    video: "video"
+   }
+ );*/
 
 //
 // dbQuests.insert(

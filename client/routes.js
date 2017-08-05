@@ -1,16 +1,17 @@
 import React, { Component } from 'react';
 import {mount} from 'react-mounter';
 import Home from './components/Home.jsx';
-import Homepage from './views/Homepage.jsx';
-import Login from './views/Login.jsx';
-import Register from './views/Register.jsx';
 import App from '../imports/ui/App.jsx';
+import Dashboard from '../imports/ui/Dashboard.jsx';
 
 import Map from './views/Map.jsx';
 import Introduction from './views/Introduction.jsx';
 import Vocabulary from './views/Vocabulary.jsx';
 import Conversation from './views/Conversation.jsx';
 import Congratulation from './views/Congratulation.jsx';
+import Homepage from './views/Homepage.jsx';
+import Login from './views/Login.jsx';
+import Register from './views/Register.jsx';
 
 FlowRouter.route('/Congratulation/:location_id', {
   name: 'Congratulation',
@@ -88,7 +89,7 @@ FlowRouter.route('/Dashboard', {
   name: 'Dashboard',
   action: function() {
     mount(Home, {
-      content: <App />
+      content: <Dashboard />
     });
   }
 });
@@ -98,7 +99,7 @@ FlowRouter.route('/logout', {
   action: function() {
     Meteor.logout(function(){
       FlowRouter.go('home');
-        });
+    });
   }
 });
 

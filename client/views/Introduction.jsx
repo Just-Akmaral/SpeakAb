@@ -25,11 +25,9 @@ class Introduction extends Component {
     let winkOpts = { f: similarityScore.winklerMetaphone, options : {threshold: 0} }
 
     console.log(similarity(s1,s2,winkOpts))*/
-
   }
 
   render(){
-    if (Meteor.user()) {
       if (!this.props.ret) {return null;}
         else {
           return (
@@ -43,11 +41,8 @@ class Introduction extends Component {
                     </div>
                   </section>
             </div>
-          )
+          );
         }
-   } else {
-          FlowRouter.go('login');
-    }
   }
 }
 

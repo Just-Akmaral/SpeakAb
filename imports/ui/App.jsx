@@ -5,16 +5,12 @@ import { Meteor } from 'meteor/meteor';
 export default class App extends Component {
 
   render() {
-   if (Meteor.user()) {
-      return (
+    return (
         <main className = "container clearfix">
           <DashboardContainer/>
         </main>
-      )
+    );
  }
-  else {
-    FlowRouter.go('home');
-  }
 
-  }
+  
 }
