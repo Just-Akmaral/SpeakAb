@@ -20,9 +20,8 @@ class Locations extends Component {
 class Map extends Component {
 
   render(){
-  //  if (Meteor.user()) {
-      if (!this.props.city) {return null;}
-        else {
+    if (!this.props.city) {return null;}
+      else {
           return (
             <ul>
               {this.props.city.locations.map((loc) =>
@@ -30,11 +29,7 @@ class Map extends Component {
               )}
             </ul>
           )
-        }
-   /*   }
-      else {
-          FlowRouter.go('login');
-      }*/
+      }
   }
 }
 

@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
-import { Meteor } from 'meteor/meteor';
+//import { Meteor } from 'meteor/meteor';
 
 
 export default class Homepage extends Component {
   render() {
-    if (!Meteor.user()) {
       return (
           <div className = "container clearfix">
             <section className="lp-content lp-content--intro">
@@ -88,8 +87,5 @@ export default class Homepage extends Component {
               </footer>
           </div>
       );
-    } else {
-      FlowRouter.go('Dashboard');
-    }  
   }
 }

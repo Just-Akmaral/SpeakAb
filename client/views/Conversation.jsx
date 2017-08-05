@@ -5,10 +5,15 @@ import ReactPlayer from 'react-player';
 
 
 class Video extends Component{
-  render() {//<ReactPlayer url='https://www.youtube.com/watch?v=y-xpjDLdr4w'/>
-    return(
-      <div>Video here</div>
-    )
+  render() {
+    if (!this.props.video_url) {return null;}
+    else {    
+      return (
+        <div>
+          <ReactPlayer url = {this.props.video_url.video}/>
+        </div>
+      )
+    }
   }
 }
 
@@ -27,8 +32,8 @@ class Video extends Component{
 class Words extends Component{   
   render(){
     if (!this.props.words) {return null;} 
-    else{
-      return(
+    else {
+      return (
         <div>
           <ul>
             {this.props.words[0]}
@@ -105,7 +110,6 @@ class Audio extends Component{
     );
   }
 }
-
 
 class User extends Component{
     constructor(props) {
@@ -204,33 +208,31 @@ class User extends Component{
         FlowRouter.go('Congratulation', par);
       }
     }
-
-  render() {
-    return(
-      <div>
-        <Audio scen = {this.props.scenario} curNumPhrase = {this.state.curNumPhrase}/>
-        <Hints scen = {this.props.scenario} curNumPhrase = {this.state.curNumPhrase}/>
-        <p ref="phrase"></p>
-        <p ref="result"></p>
-        <button ref="run" className="run" onClick={this.run.bind(this)}>Nice record button</button>
-      </div>
-    );
-  }
+    render() {
+      return(
+        <div>
+          <Audio scen = {this.props.scenario} curNumPhrase = {this.state.curNumPhrase}/>
+          <Hints scen = {this.props.scenario} curNumPhrase = {this.state.curNumPhrase}/>
+          <p ref = "phrase"></p>
+          <p ref = "result"></p>
+          <button ref = "run" className = "run" onClick = {this.run.bind(this)}>Nice record button</button>
+        </div>
+      );
+    }
 }
 
 class Conversation extends Component {
   render(){
-      return (
-        <div className="container clearfix">
-          <Video />
-          <User scenario = {this.props.conv}/>
-        </div>
-      );
+        return (
+            <div className="container clearfix">
+              <Video video_url = {this.props.conv}/>
+              <User scenario = {this.props.conv}/>
+            </div>
+        );
   }
 }
 
 export default createContainer(props => {
-
   let conv = dbQuestsScenario.findOne(
     {"name": props.location_id}
   );

@@ -19,12 +19,11 @@ class Word extends Component {
 
 class Vocabulary extends Component {
   render(){
-    //if (!Meteor.user()) {FlowRouter.go('login');
-      if (!this.props.ret) {return null;}
+    if (!this.props.ret) {return null;}
       else {
         return (
           <div className="container clearfix">
-            <a href="#" className = "link-back">back to the map</a>
+            <a href = {"/Introduction/" + this.props.location_id} className = "link-back">back to the introduction</a>
             <ul>
               {this.props.ret[0].vocabulary.map((word) =>
                 <Word key = {word.english} word = {word} />
