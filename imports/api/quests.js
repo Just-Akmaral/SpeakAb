@@ -3,48 +3,62 @@ import { Mongo } from 'meteor/mongo';
 export const dbQuests = new Mongo.Collection('quests');
 export const dbQuestsScenario = new Mongo.Collection('scenario');
 
-//
- /*dbQuestsScenario.insert(
-   {
-    name: "New-York_airport",
-    congratulation: "You was so good in New-York_airport",
-    tasks: [
-       {
-         user_phrase: "sorry i don't understand",
-         bot_phrase: "do you speak english?"
-       },
-       {
-         user_phrase: "hello",
-         bot_phrase: "hi"
-       },
-       {
-         user_phrase: "i don't know",
-         bot_phrase: "where can i buy a ticket"
-       }
-     ],
-    video: "video"
-   },
+
+/*   dbQuestsScenario.insert(
    {
     name: "New-York_TimeSquare",
-    congratulation: "You was so good in New-York_TimeSquare",
+    congratulation: "You was so good in TimeSquare",
     tasks: [
        {
          user_phrase: "sorry i don't understand",
-         bot_phrase: "do you speak english?"
+         bot_phrase: "do you speak english?",
+         hint: "say that you are sorry and you don't understand",
+         words: ["sorry","understand","don't","i"]
        },
        {
-         user_phrase: "hello",
-         bot_phrase: "hi"
+         user_phrase: "hello how are you",
+         bot_phrase: "hi",
+         hint: "say hello and ask how you are",
+         words: ["hello","how","are","you"]
        },
        {
          user_phrase: "i don't know",
-         bot_phrase: "where can i buy a ticket"
+         bot_phrase: "where can i buy a ticket",         
+         hint: "say that you don't know",
+         words: ["know","don't","i"]
        }
      ],
     video: "video"
    }
- );*/
-
+ );
+   dbQuestsScenario.insert(
+   {
+    name: "New-York_airport",
+    congratulation: "You was so good in airport",
+    tasks: [
+       {
+         user_phrase: "sorry i don't understand",
+         bot_phrase: "do you speak english?",
+         hint: "say that you are sorry and you don't understand",
+         words: ["sorry","understand","don't","i"]
+       },
+       {
+         user_phrase: "hello how are you",
+         bot_phrase: "hi",
+         hint: "say hello and ask how you are",
+         words: ["hello","how","are","you"]
+       },
+       {
+         user_phrase: "i don't know",
+         bot_phrase: "where can i buy a ticket",         
+         hint: "say that you don't know",
+         words: ["know","don't","i"]
+       }
+     ],
+    video: "video"
+   }
+ );
+ */
 //
 // dbQuests.insert(
 //   {

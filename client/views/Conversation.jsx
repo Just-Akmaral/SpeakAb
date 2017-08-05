@@ -12,33 +12,72 @@ class Video extends Component{
   }
 }
 
-
-class Words extends Component{
+/*class Word extends Component {
   render(){
-    return(
-      <li>excuse me</li>
-    )
+    if (!this.props.word) {return null;} 
+    else {
+      return (
+        <li>{this.props.word}</li>
+      );
+    }  
+  }
+};
+*/
+
+class Words extends Component{   
+  render(){
+    if (!this.props.words) {return null;} 
+    else{
+      return(
+        <div>
+          <ul>
+            {this.props.words[0]}
+          </ul>
+        </div>
+      );
+    }
   }
 }
 
 class Hints extends Component{
+  getHint(item){
+    let i = 0;
+    let arr_tasks = this.props.scen.tasks;
+    let arr_hints = [];
+    while (i <= arr_tasks.length-1) {
+        arr_hints.push(arr_tasks[i].hint);
+        i++;
+    }
+    return arr_hints[item];
+  }
+  getWords(item){
+    let i = 0;
+    let arr_tasks = this.props.scen.tasks;
+    let arr_words = [];
+    while (i <= arr_tasks.length-1) {
+        arr_words.push(arr_tasks[i].words);
+        i++;
+    }
+    return arr_words[item];
+  }
   render(){
-    return(
-      <div>
-        <p>Ask about smth</p>
-        <p>Use these words</p>
-        <ul>
-          <Words />
-        </ul>
-      </div>
-    )
+    if (!this.props.scen) {return null;}  
+    else {  
+      return(
+        <div>
+          <p>{this.getHint(this.props.curNumPhrase)}</p>
+          <p>Use these words</p>
+          <Words words = {this.getWords(this.props.curNumPhrase)} />
+        </div>
+      );
+    }  
   }
 }
 
 class Audio extends Component{
   getBotPhrases(){
     let i = 0;
-    let arr_tasks = this.props.scenario.tasks;
+    let arr_tasks = this.props.scen.tasks;
     let arr_phrases = [];
     while (i <= arr_tasks.length-1) {
         arr_phrases.push(arr_tasks[i].bot_phrase);
@@ -153,7 +192,7 @@ class User extends Component{
       recognition.onerror = function(event) {
         testBtn.disabled = false;
         alert('Error occurred in recognition: ' + event.error);
-        testBtn.textContent = 'Start new test';
+        testBtn.textContent = 'Record';
       }
     }
     run(event){
@@ -169,7 +208,8 @@ class User extends Component{
   render() {
     return(
       <div>
-        <Audio scenario = {this.props.scenario} curNumPhrase = {this.state.curNumPhrase}/>
+        <Audio scen = {this.props.scenario} curNumPhrase = {this.state.curNumPhrase}/>
+        <Hints scen = {this.props.scenario} curNumPhrase = {this.state.curNumPhrase}/>
         <p ref="phrase"></p>
         <p ref="result"></p>
         <button ref="run" className="run" onClick={this.run.bind(this)}>Nice record button</button>
@@ -183,7 +223,6 @@ class Conversation extends Component {
       return (
         <div className="container clearfix">
           <Video />
-          <Hints />
           <User scenario = {this.props.conv}/>
         </div>
       );
@@ -195,8 +234,8 @@ export default createContainer(props => {
   let conv = dbQuestsScenario.findOne(
     {"name": props.location_id}
   );
-
   return {
     conv
   };
+
 }, Conversation)
