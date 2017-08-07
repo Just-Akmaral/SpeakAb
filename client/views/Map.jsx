@@ -5,13 +5,10 @@ import { createContainer } from 'meteor/react-meteor-data';
 class Locations extends Component {
   render(){
       return (
-        <div className="container clearfix">
-          <li>
-            <a href = {"/Introduction/" + this.props.location_item.id}>
-              {this.props.location_item.name}
-            </a>
-          </li>
-        </div>
+        <a href={"/Introduction/" + this.props.location_item.id} className={'map__location map__location--' + this.props.location_item.name}>
+          <h3 className="map__title">{this.props.location_item.name}</h3>
+        </a>
+
       )
   }
 }
@@ -23,17 +20,27 @@ class Map extends Component {
     if (!this.props.city) {return null;}
       else {
           return (
-            <ul>
-              {this.props.city.locations.map((loc) =>
-                <Locations key = {loc.id} location_item = {loc} />
-              )}
-            </ul>
+            <main className="container clearfix">
+              <div className="breadcrumbs">
+                <ul>
+                  <li><a href="/Dashboard/" className="breadcrumbs__link">Dashboard</a></li>
+                  <li><a className="breadcrumbs__link breadcrumbs__link--current">{this.props.city.name}</a></li>
+                </ul>
+              </div>
+              <h1 className="h1">Choose one location</h1>
+              <section className="map">
+                {this.props.city.locations.map((loc) =>
+                  <Locations key = {loc.id} location_item = {loc} />
+                )}
+              </section>
+            </main>
           )
       }
   }
 }
 
 export default MapContainer = createContainer( props => {
+
   return {
     city: dbQuests.findOne(
        {"_id": props.quest_id}

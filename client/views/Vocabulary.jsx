@@ -4,12 +4,25 @@ import { createContainer } from 'meteor/react-meteor-data';
 
 class Word extends Component {
 
+  setAudio(text){
+    var utterance = new SpeechSynthesisUtterance(text);
+    var voices = window.speechSynthesis.getVoices();
+    utterance.voice = voices.filter(function(voice) {return voice.name == 'Google US English'; })[0];
+    window.speechSynthesis.speak(utterance);
+  }
+  runAudio(event){
+    event.preventDefault();
+    let Btn = this.refs.runAudio;
+    let text = Btn.getAttribute("data-word");
+    console.log(text);
+    this.setAudio(text);
+  }
   render(){
     return (
-      <div className="container clearfix">
-        <li>
-          {this.props.word.english} - {this.props.word.russian}
-        </li>
+      <div className = "vocabulary__card clearfix">
+        <button ref = "runAudio" name="button" className="btn-sound" onClick = {this.runAudio.bind(this)} data-word = {this.props.word.english}></button> 
+        <span className="text text-important">{this.props.word.english}</span>
+        <span className="text text-secondary">{this.props.word.russian}</span>
       </div>
     )
   }
@@ -23,12 +36,20 @@ class Vocabulary extends Component {
       else {
         return (
           <div className="container clearfix">
-            <a href = {"/Introduction/" + this.props.location_id} className = "link-back">back to the introduction</a>
-            <ul>
+            <div className="breadcrumbs">
+              <ul>
+                <li><a href="Dashboard" className="breadcrumbs__link">Dashboard</a></li>
+                <li><a href = {"/Introduction/" + this.props.location_id} className="breadcrumbs__link">Introduction</a></li>
+                <li><a className="breadcrumbs__link breadcrumbs__link--current">Vocabulary</a></li>
+              </ul>
+            </div>
+
+            <section className = "vocabulary">
+              <h1 className = "h2">Remember these words</h1>
               {this.props.ret[0].vocabulary.map((word) =>
                 <Word key = {word.english} word = {word} />
               )}
-            </ul>
+            </section>
           </div>
         );
       }

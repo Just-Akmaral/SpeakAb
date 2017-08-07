@@ -9,14 +9,20 @@ class Introduction extends Component {
       else {
           return (
             <div className = "container clearfix">
-              <a href = {"/Map/" + this.props.map_obj._id} className = "link-back">back to the map</a>
-                  <section className = "location clearfix">
-                    <p className = "location__description">{this.props.ret[0].description}</p>
-                    <div>
-                      <a href = {"/Conversation/" + this.props.location_id} className = "btn btn-primary">Start conversation</a>
-                      <a href = {"/Vocabulary/" + this.props.location_id} className = "btn btn-secondary">Show vocabulary</a>
-                    </div>
-                  </section>
+              <div className="breadcrumbs">
+                <ul>
+                  <li><a href="/Dashboard/" className="breadcrumbs__link">Dashboard</a></li>
+                  <li><a href = {"/Map/" + this.props.map_obj._id} className="breadcrumbs__link">{this.props.map_obj.name}</a></li>
+                  <li><a className="breadcrumbs__link breadcrumbs__link--current">{this.props.ret[0].name}</a></li>
+                </ul>
+              </div>
+              <section className = "location clearfix">
+                <p className = "location__description">{this.props.ret[0].description}</p>
+                <div>
+                  <a href = {"/Conversation/" + this.props.location_id} className = "btn btn-primary">Start conversation</a>
+                  <a href = {"/Vocabulary/" + this.props.location_id} className = "btn btn-secondary">Show vocabulary</a>
+                </div>
+              </section>
             </div>
           );
       }
@@ -32,9 +38,10 @@ export default createContainer( props => {
     let map_obj = 
       dbQuests.findOne(
         {"locations.id": props.location_id},
-        {fields: {"_id": true}}
+        {fields: {"_id": true, "name":true }}
       );
     
+
     let ret = null;
     if(loc_it) {
         ret = loc_it['locations'].filter(obj => {return obj.id === props.location_id});

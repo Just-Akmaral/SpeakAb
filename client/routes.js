@@ -70,7 +70,7 @@ FlowRouter.route('/', {
 FlowRouter.route('/login', {
   name: 'login',
   action: function() {
-    mount(Home, {
+    mount(Login, {
       content: <Login />
     });
   }
