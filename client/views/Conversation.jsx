@@ -36,7 +36,9 @@ class Words extends Component{
       return (
         <div>
           <ul className="clearfix">
-            <Word key={this.props.words[0]} word={this.props.words[0]}/>
+              {this.props.words.map(word => (
+                <Word word={word}/>
+              ))}
           </ul>
         </div>
       );
@@ -250,7 +252,7 @@ class User extends Component{
 
     render() {
       return(
-        <div>
+        <section className="conversation clearfix">
           <section className="conversation__bot">
             <Video video_url = {this.props.scenario}/>
             <Audio scen = {this.props.scenario} curNumPhrase = {this.state.curNumPhrase}/>
@@ -266,7 +268,7 @@ class User extends Component{
               <p ref = "result"></p>
             </div>          
            </section>
-        </div>
+        </section>
       );
     }
 }
@@ -276,7 +278,7 @@ class Conversation extends Component {
     if ( (!this.props.ret) || (!this.props.map_obj) ){return null;}
       else {    
         return (
-            <div className="container clearfix">                
+            <main className="container clearfix">                
               <div className="breadcrumbs">
                 <ul>
                   <li><a href = "/Dashboard/" className="breadcrumbs__link">Dashboard</a></li>
@@ -285,7 +287,7 @@ class Conversation extends Component {
                 </ul>
               </div>
               <User scenario = {this.props.conv}/>
-            </div>
+            </main>
 
         );
       }  

@@ -3,7 +3,7 @@ import { Mongo } from 'meteor/mongo';
 export const dbQuests = new Mongo.Collection('quests');
 export const dbQuestsScenario = new Mongo.Collection('scenario');
 
-/*
+
   dbQuestsScenario.insert(
     {
       name: "New-York_Hotel",
@@ -34,7 +34,7 @@ export const dbQuestsScenario = new Mongo.Collection('scenario');
 
   dbQuestsScenario.insert(
    {
-    name: "New-York_airport",
+    name: "New-York_Airport",
     congratulation: "You was so good in airport",
     tasks: [
        {
@@ -92,4 +92,3 @@ dbQuests.insert(
    ]
   }
 );
-*/
