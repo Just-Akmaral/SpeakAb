@@ -3,10 +3,10 @@ import { Mongo } from 'meteor/mongo';
 export const dbQuests = new Mongo.Collection('quests');
 export const dbQuestsScenario = new Mongo.Collection('scenario');
 
-dbQuests.remove();
+/*dbQuests.remove();
 dbQuestsScenario.remove();
 
-  dbQuestsScenario.insert(
+ dbQuestsScenario.insert(
     {
       name: "New-York_Hotel",
       congratulation: "You was so good in Hotel",
@@ -94,3 +94,4 @@ dbQuests.insert(
    ]
   }
 );
+*/

@@ -16,8 +16,14 @@ import Register from './views/Register.jsx';
 FlowRouter.route('/Congratulation/:location_id', {
   name: 'Congratulation',
   action(params) {
-    mount(Home, {
-      content: <Congratulation location_id = {params.location_id}/>
+    Tracker.autorun(function() {
+            if (!Meteor.userId()) {
+                FlowRouter.go('home');
+            } else {
+                      mount(Home, {
+                        content: <Congratulation location_id = {params.location_id}/>
+                       });
+            }
     });
   }
 });
@@ -25,71 +31,125 @@ FlowRouter.route('/Congratulation/:location_id', {
 FlowRouter.route('/Conversation/:location_id', {
   name: 'Conversation',
   action(params) {
-    mount(Home, {
-      content: <Conversation location_id = {params.location_id}/>
-    });
+    Tracker.autorun(function() {
+            if (!Meteor.userId()) {
+                FlowRouter.go('home');
+            } else {
+                      mount(Home, {
+                        content: <Conversation location_id = {params.location_id}/>
+                       });
+            }
+    });  
   }
 });
 
 FlowRouter.route('/Vocabulary/:location_id', {
   name: 'Vocabulary',
   action(params) {
-    mount(Home, {
-      content: <Vocabulary location_id = {params.location_id}/>
-    });
+    Tracker.autorun(function() {
+            if (!Meteor.userId()) {
+                FlowRouter.go('home');
+            } else {
+                      mount(Home, {
+                        content: <Vocabulary location_id = {params.location_id}/>
+                       });
+            }
+    });    
   }
 });
 
 FlowRouter.route('/Introduction/:location_id', {
   name: 'Introduction',
   action(params) {
-    mount(Home, {
-      content: <Introduction location_id = {params.location_id} />
-    });
+    Tracker.autorun(function() {
+            if (!Meteor.userId()) {
+                FlowRouter.go('home');
+            } else {
+                      mount(Home, {
+                        content: <Introduction location_id = {params.location_id} />
+                       });
+            }
+    });     
   }
 });
 
 FlowRouter.route('/map/:quest_id', {
   name: 'map',
   action(params) {
-    mount(Home, {
-      content: <Map quest_id = {params.quest_id}/>
-    });
+    Tracker.autorun(function() {
+            if (!Meteor.userId()) {
+                FlowRouter.go('home');
+            } else {
+                      mount(Home, {
+                        content: <Map quest_id = {params.quest_id}/>
+                       });
+            }
+    });    
   }
 });
 
 FlowRouter.route('/', {
   name: 'home',
   action: function() {
-     mount(Home, {
-       content:  <Homepage />
-     });
+     Tracker.autorun(function() {
+            if (!Meteor.userId()) {
+                mount(Home, {
+                   content:  <Homepage />
+                 });
+            } else {
+                  mount(Home, {
+                    content: <Dashboard />
+                  });
+            }
+    });
   }
 });
 
 FlowRouter.route('/login', {
   name: 'login',
   action: function() {
-    mount(Login, {
-      content: <Login />
-    });
+     Tracker.autorun(function() {
+            if (!Meteor.userId()) {
+                mount(Login, {
+                   content:  <Login />
+                 });
+            } else {
+                  mount(Home, {
+                    content: <Dashboard />
+                  });
+            }
+    });    
   }
 });
 
 FlowRouter.route('/register', {
   name: 'register',
   action: function() {
-    mount(Home, {
-      content: <Register />
-    });
+     Tracker.autorun(function() {
+            if (!Meteor.userId()) {
+                mount(Home, {
+                   content:  <Register />
+                 });
+            } else {
+                  mount(Home, {
+                    content: <Dashboard />
+                  });
+            }
+    });       
   }
 });
 
 FlowRouter.route('/Dashboard', {
   name: 'Dashboard',
   action: function() {
-    mount(Home, {
-      content: <Dashboard />
+     Tracker.autorun(function() {
+            if (!Meteor.userId()) {
+                FlowRouter.go('home');
+            } else {
+                  mount(Home, {
+                    content: <Dashboard />
+                  });
+            }
     });
   }
 });
