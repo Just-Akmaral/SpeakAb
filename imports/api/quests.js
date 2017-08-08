@@ -8,9 +8,9 @@ dbQuests.remove({});
 dbQuestsScenario.remove({});
 
 
- /*dbQuestsScenario.insert(
+ dbQuestsScenario.insert(
     {
-      name: "New-York_Airport",
+      name: "New_York_Airport",
       congratulation: "You’ve completed this task, now you can move on to the next one",
       tasks: [
          {
@@ -44,7 +44,7 @@ dbQuests.insert(
    img: "/images/New-York.jpg",
    locations: [
      {
-       id: "New-York_Airport",
+       id: "New_York_Airport",
        name: "Airport",
        img: "url-img",
        vocabulary: [
@@ -57,4 +57,3 @@ dbQuests.insert(
    ]
   }
 );
-*/
