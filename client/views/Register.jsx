@@ -31,7 +31,7 @@ export default class Register extends Component {
 
   render() {
     return (
-    	  <main className = "container clearfix">
+    	  <main className = "container">
 			<div className="sign sign__up clearfix">
 				<h1 className="sign__title logo">SpeakAbility</h1>
 				<RegisterForm

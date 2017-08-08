@@ -20,13 +20,13 @@ class Quest extends Component {
 class Dashboard extends Component {
   render(){
       return(
-        <div className = "container clearfix">
+        <main className = "container clearfix">
           <section className = "quests quests--active">
             {this.props.quests.map(function(quest){
               return <Quest key = {quest._id} quest = {quest}/>
             })}
           </section>
-        </div>  
+        </main>  
       );
   }
 };

@@ -26,8 +26,8 @@ export default class Login extends Component {
   render() {
     return (
       <main className = "container">
-        <div className = "login clearfix">
-          <h1 className = "login__title">SpeakAbility</h1>
+        <div className = "sign sign__in clearfix">
+          <h1 className = "sign__title logo">SpeakAbility</h1>
           <LoginForm submitBtnLabel="Login" submitAction={this.loginWithPassword} />
           {this.props.registerLink}
         </div>
