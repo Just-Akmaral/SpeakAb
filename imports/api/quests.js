@@ -7,7 +7,7 @@ export const dbQuestsScenario = new Mongo.Collection('scenario');
 /*dbQuests.remove({});
 dbQuestsScenario.remove({});*/
 
-
+/*
  dbQuestsScenario.insert(
     {
       name: "New_York_Airport",
@@ -57,3 +57,4 @@ dbQuests.insert(
    ]
   }
 );
+*/

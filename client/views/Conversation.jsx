@@ -152,7 +152,8 @@ class User extends Component{
         isTrue: false,
         isEnd: false,
         showHelp: false,
-        classResult: 'hidden'
+        classResult: 'hidden',
+        clickHideHint: false
       };
     }
     getPhrases(index){//масисив с прав фразами
@@ -165,13 +166,6 @@ class User extends Component{
       }
       return arr_phrases[index];//массив[index] с фразами
     }
-    /*checkEnd() {
-      if (this.state.curNumPhrase >= (arr.length-1)){
-        this.setState({isEnd: true});
-      } 
-      number = this.state.curNumPhrase;
-      return number;
-    }*/
     includePhrase(user, bot_arr){
       let result;
       result = bot_arr.includes(user);  
@@ -186,15 +180,15 @@ class User extends Component{
     giveHelp(){
       this.setState({showHelp: true});
     }
+    removeHelp(){
+      this.setState({showHelp: false});
+    }
     countAttempt(index){
       this.setState({curNumAttempt: this.state.curNumAttempt + index});
     }
     countNumPhrase(index){
       this.setState({curNumPhrase: this.state.curNumPhrase + index});
     }
-    /*endConversation(){
-      this.setState({isEnd: true});
-    }*/
     testSpeech(){
 
       var resultPara = this.refs.result;
@@ -204,7 +198,8 @@ class User extends Component{
       user_speechPara.textContent = '';
       testBtn.disabled = true;
       testBtn.textContent = 'wait a minute';
-      resultPara.textContent = 'Your result';
+      resultPara.textContent = '';
+      this.removeHelp();
 
       var phrases = this.getPhrases(this.state.curNumPhrase); // текущий массив фраз
       var Component = this;
@@ -229,13 +224,9 @@ class User extends Component{
         var speechResult = event.results[0][0].transcript;
         user_speechPara.textContent = speechResult;
 
-       speechResult = speechResult.toLowerCase();
-        console.log(speechResult);
-        console.log(phrases);
-        var sorted=phrases.join('|').toLowerCase().split('|');
-        console.log(sorted);
-        console.log( this.includePhrase(speechResult, phrases));
-        
+        speechResult = speechResult.toLowerCase();
+        phrases = phrases.join('|').toLowerCase().split('|');
+
         if ( this.includePhrase(speechResult, phrases) ) {
 
            /* resultPara.textContent = "Success! Move on to the next task";
@@ -265,16 +256,24 @@ class User extends Component{
 
     }
 
+    returnCurNumPhrase(){
+      return this.state.curNumPhrase;
+    }
+    returnTasksLength(){
+      return this.props.scenario.tasks.length-1; 
+    }
     run(event){
       event.preventDefault();
-      if (this.state.curNumPhrase >= (this.props.scenario.tasks-1)){
+      if (this.returnCurNumPhrase() >= this.returnTasksLength()) {
         this.setState({isEnd: true});
+        alert("The end! Click Record Voice");
       } 
       if (this.state.isEnd !== true){ // если это не последнее задание
         if (this.state.isWrong){ // проверяем если этот ответ не правильный
           if (this.state.curNumAttempt === 3){ // если попытки уже было 3
             this.countAttempt(-3); // сбрасываем счетчик попыток
             this.giveHelp();
+            alert("3!");
           }
         }
         this.testSpeech();
@@ -296,7 +295,7 @@ class User extends Component{
       return setText;
     }
     setClassResult(){
-    /*  if (this.state.isTrue){
+      /*  if (this.state.isTrue){
         this.setState({classResult: 'alert alert--success'});
       }
       else{
@@ -330,7 +329,7 @@ class User extends Component{
               <div className="help__popup">
                 <h3 className="h3">Try to say:</h3>
                 <p className="text-important">Can I get a seat near the aisle?</p>
-                <button type="button" name="button" className="btn-close">close</button>
+                <button type="button" name="button" onClick = {this.removeHelp.bind(this)} className = 'btn-close'>close</button>
               </div>
             </section>
         </section>
