@@ -9,7 +9,7 @@ dbQuestsScenario.remove();
  dbQuestsScenario.insert(
     {
       name: "New-York_Hotel",
-      congratulation: "You was so good in Hotel",
+      congratulation: "You’ve completed this task, now you can move on to the next one",
       tasks: [
          {
            user_phrase: "sorry i don't understand",
@@ -37,7 +37,7 @@ dbQuestsScenario.remove();
   dbQuestsScenario.insert(
    {
     name: "New-York_Airport",
-    congratulation: "You was so good in airport",
+    congratulation: "You’ve completed this task, now you can move on to the next one",
     tasks: [
        {
          user_phrase: "sorry i don't understand",

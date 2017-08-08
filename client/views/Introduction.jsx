@@ -8,7 +8,7 @@ class Introduction extends Component {
     if (!this.props.ret) {return null;}
       else {
           return (
-            <div className = "container clearfix">
+            <main className = "container clearfix">
               <div className="breadcrumbs">
                 <ul>
                   <li><a href="/Dashboard/" className="breadcrumbs__link">Dashboard</a></li>
@@ -16,14 +16,17 @@ class Introduction extends Component {
                   <li><a className="breadcrumbs__link breadcrumbs__link--current">{this.props.ret[0].name}</a></li>
                 </ul>
               </div>
-              <section className = "location clearfix">
-                <p className = "location__description">{this.props.ret[0].description}</p>
-                <div>
-                  <a href = {"/Conversation/" + this.props.location_id} className = "btn btn-primary">Start conversation</a>
-                  <a href = {"/Vocabulary/" + this.props.location_id} className = "btn btn-secondary">Show vocabulary</a>
+              <section className = "location ">
+                <h1 className="h2">Situation</h1>
+                <div className="location__description clearfix">                
+                  <p className = "text-important">{this.props.ret[0].description}</p>
+                  <div className="btns">
+                    <a href = {"/Conversation/" + this.props.location_id} className = "btn btn-primary">Start conversation</a>
+                    <a href = {"/Vocabulary/" + this.props.location_id} className = "btn btn-secondary">Show vocabulary</a>
+                  </div>
                 </div>
               </section>
-            </div>
+            </main>
           );
       }
   }

@@ -73,7 +73,7 @@ export default class Homepage extends Component {
                   Stop worrying <br/>
                   Start speaking
                 </h2>
-                <a href="Login" className="btn btn-primary btn-cta btn-cta--header">Try demo for free</a>
+                <a href="Register" className="btn btn-primary btn-cta btn-cta--header">Try demo for free</a>
               </section>
 
               <footer className="footer">

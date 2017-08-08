@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="25px" height="25px" viewBox="0 0 25 25" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 46 (44423) - http://www.bohemiancoding.com/sketch -->
+    <title>Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="web" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="task-chat-result-success" transform="translate(-687.000000, -593.000000)" fill-rule="nonzero" fill="#A0D16A">
+            <g id="cta" transform="translate(0.000000, 506.000000)">
+                <g id="Group" transform="translate(376.000000, 73.000000)">
+                    <g id="Group-13" transform="translate(291.000000, 0.000000)">
+                        <path d="M32.5,14 C25.5967666,14 20,19.5965322 20,26.5 C20,33.4034678 25.5967666,39 32.5,39 C39.4039952,39 45,33.4034678 45,26.5 C45,19.5965322 39.4037608,14 32.5,14 Z M30.2069886,32.9210061 L24.7029761,27.417228 L26.5374907,25.5827134 L30.2069886,29.251977 L38.4625093,20.9962219 L40.2970239,22.8307365 L30.2069886,32.9210061 Z" id="Shape"></path>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

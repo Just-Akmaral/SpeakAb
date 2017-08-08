@@ -24,7 +24,7 @@ class Home extends Component {
                 <section className="header__cta">
                   <h1 className="header__title title">Train your speaking skills</h1>
                   <h3 className="header__subtitle">By completing voice quests on out platform</h3>
-                  <a href="/login" className="btn btn-primary btn-cta btn-cta--header">Try demo for free</a>
+                  <a href="/register" className="btn btn-primary btn-cta btn-cta--header">Try demo for free</a>
                 </section>
                 <div className="header__lang">
                   <p>We support american english language now</p>

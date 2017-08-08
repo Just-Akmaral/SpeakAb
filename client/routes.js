@@ -127,7 +127,7 @@ FlowRouter.route('/register', {
   action: function() {
      Tracker.autorun(function() {
             if (!Meteor.userId()) {
-                mount(Home, {
+                mount(Register, {
                    content:  <Register />
                  });
             } else {

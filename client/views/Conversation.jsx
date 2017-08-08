@@ -5,12 +5,17 @@ import ReactPlayer from 'react-player';
 
 
 class Video extends Component{
-  render() {//  
+  render() {
     if (!this.props.video_url) {return null;}
     else {    
       return (
         <div className="conversation__vid">
-          <ReactPlayer url = {this.props.video_url.video} style ="position:relative;height:0;padding-bottom:56.25%"/>
+          <div style = {{
+                position: 'relative',
+                height: '0',
+                paddingBottom: '56.25%'
+          }}>
+          </div>
         </div>
       )
     }
@@ -37,7 +42,7 @@ class Words extends Component{
         <div>
           <ul className="clearfix">
               {this.props.words.map(word => (
-                <Word word={word}/>
+                <Word key={word} word={word}/>
               ))}
           </ul>
         </div>
@@ -87,18 +92,21 @@ class Hints extends Component{
 }
 
 class Audio extends Component{
+  constructor(props) {
+    super(props);
+    this.state = {
+      clicked: false
+    };
+  }
   runShowText(event){
     event.preventDefault();    
     let text = this.getBotPhrases(this.props.curNumPhrase);
-    this.showText(text);
-  }
-  showText(text) {
-    var bot_speechPara = this.refs.bot_speech;
-    bot_speechPara.textContent = text;
-    if (bot_speechPara.style.display === 'none') {
-        bot_speechPara.style.display = 'block';
+    let bot_speechPara = this.refs.bot_speech;
+    bot_speechPara.textContent = text;    
+    if (!this.state.clicked) {
+        this.setState({clicked: true});
     } else {
-        bot_speechPara.style.display = 'none';
+        this.setState({clicked: false});
     }
   }
   getBotPhrases(item){
@@ -124,11 +132,11 @@ class Audio extends Component{
   }
   render() {
     return(
-      <div className = "conversation__player">
+      <div className = "player">
         <button ref="runAudio" className="runAudio" onClick={this.runAudio.bind(this)} className="player__play"></button> 
-        <button ref="runShowText" className="runShowText" onClick={this.runShowText.bind(this)} className="player__showtext"></button> 
-        <span className="player__sound"></span>
-        <span ref = "bot_speech" className="player__text"></span>
+        <button ref="runShowText" className="runShowText" style = {{display:'block'}}onClick={this.runShowText.bind(this)} className="player__showtext"></button> 
+        <span className={this.state.clicked ? 'player__sound hidden' : 'player__sound'}></span>
+        <span ref = "bot_speech" className={this.state.clicked ? 'player__text' : 'player__text hidden'}></span>
       </div>
     );
   }
@@ -139,10 +147,12 @@ class User extends Component{
       super(props);
       this.state = {
         curNumPhrase: 0, 
-        curNumTry: 0,
-        isSpeech: false,
-        isEnd: false
-    };
+        curNumAttempt: 0,
+        isWrong: false,
+        isTrue: false,
+        isEnd: false,
+        showHelp: false
+      };
     }
     compareSentences(one, two){
       var stringSimilarity = require('string-similarity');
@@ -161,16 +171,28 @@ class User extends Component{
     }
     nextPhrase(arr) {
       let number;
-      if (this.state.curNumPhrase < (arr.length-1)){
-        number = this.state.curNumPhrase;
-        this.setState({curNumPhrase: 1 + this.state.curNumPhrase});
-      } else {
-        number = this.state.curNumPhrase;
+      if (this.state.curNumPhrase >= (arr.length-1)){
         this.setState({isEnd: true});
-      }
+      } 
+      number = this.state.curNumPhrase;
       return number;
     }
 
+    makeWrong(){
+      this.setState({isWrong: true});
+    }
+    makeTrue(){
+      this.setState({isTrue: true});
+    }
+    giveHelp(){
+      this.setState({showHelp: true});
+    }
+    countAttempt(index){
+      this.setState({curNumAttempt: this.state.curNumAttempt + index});
+    }
+    countNumPhrase(index){
+      this.setState({curNumPhrase: this.state.curNumPhrase + index});
+    }
     testSpeech(){
 
       var resultPara = this.refs.result;
@@ -180,15 +202,14 @@ class User extends Component{
       user_speechPara.textContent = '';
       testBtn.disabled = true;
       testBtn.textContent = 'wait a minute';
-      resultPara.textContent = 'your result';
+      resultPara.textContent = 'Your result';
 
       var phrases = this.getPhrases();
       var phrase;
       phrase = phrases[this.nextPhrase(phrases)];
 
-     /* if (this.state.curNumPhrase ===0){var isWrong = false;}       
-      if (isWrong){alert("Prev was wrong");}*/
-      //код выше тоже оставить
+      var Component = this;
+      Component.setState({ curNumTry: this.state.curNumTry + 1});
       
       var SpeechRecognition = SpeechRecognition || webkitSpeechRecognition || mozSpeechRecognition || msSpeechRecognition;
       var SpeechGrammarList = SpeechGrammarList || webkitSpeechGrammarList || mozSpeechRecognitionList || msSpeechRecognitionList;
@@ -202,29 +223,31 @@ class User extends Component{
       speechRecognitionList.addFromString(grammar, 1);
       recognition.grammars = speechRecognitionList;
 
-      
+     
       recognition.start();
 
-      recognition.onresult = function(event) {
+      recognition.onresult = (event) => {
         var speechResult = event.results[0][0].transcript;
-        
-        user_speechPara.textContent = speechResult; 
+        user_speechPara.textContent = speechResult;
 
         speechResult = speechResult.toUpperCase();
         phrase = phrase.toUpperCase();
         
+        console.log("speechResult " + speechResult);
+        console.log("phrase "+ phrase);
         if (speechResult === phrase) {
-            resultPara.textContent = "Success! Move on to the next task";
-            resultPara.style.color = 'lime';
+           /* resultPara.textContent = "Success! Move on to the next task";
+            resultPara.style.color = 'lime';*/
+            this.makeTrue();
+            this.countNumPhrase(1);
         } else {
-            resultPara.textContent = "You didn't get that right, try again";
-            resultPara.style.color = 'red';
-          // isWrong = true;
-          //оставить тут параметр
+           /* resultPara.textContent = "You didn't get that right, try again";
+            resultPara.style.color = 'red';*/
+             this.makeWrong(); 
+             this.countAttempt(1);
         }
       }
     
-    // впихнуть сюда state а брать значение из iswrong
 
       recognition.onspeechend = function() {
         recognition.stop();
@@ -242,7 +265,14 @@ class User extends Component{
 
     run(event){
       event.preventDefault();
-      if (this.state.isEnd !== true){
+      if (this.state.isEnd !== true){ // если это не последнее задание
+        if (this.state.isWrong){ // проверяем если этот ответ не правильный
+          alert(this.state.curNumAttempt); // выводим номер попытки
+          if (this.state.curNumAttempt === 3){ // если попытки уже было 2,
+            this.countAttempt(-3); // сбрасываем счетчик попыток
+            this.giveHelp();
+          }
+        }
         this.testSpeech();
       } else {
         let par = { location_id: this.props.scenario.name};
@@ -250,6 +280,28 @@ class User extends Component{
       }
     }
 
+    showResult(){
+      let setText='';
+      if (this.state.isTrue){
+        setText = 'Succes! Move on to the next task';
+      }
+      else{
+        if (this.state.isWrong)
+          setText = 'You didn’t get that right, try again';
+      }
+      return setText;
+    }
+    setClass(){
+      let setClass = 'hidden';
+      if (this.state.isTrue){
+        setClass = 'alert alert--success';
+      }
+      else{
+        if (this.state.isWrong)
+          setClass = 'alert alert--danger';
+      }
+      return setClass;      
+    }
     render() {
       return(
         <section className="conversation clearfix">
@@ -258,16 +310,27 @@ class User extends Component{
             <Audio scen = {this.props.scenario} curNumPhrase = {this.state.curNumPhrase}/>
           </section>  
           <section className="conversation__hints">
-            <Hints scen = {this.props.scenario} curNumPhrase = {this.state.curNumPhrase} isSpeech = {this.state.isSpeech}/>
+            <Hints numAttemt= {this.state.curNumAttempt}scen = {this.props.scenario} curNumPhrase = {this.state.curNumPhrase} isSpeech = {this.state.isSpeech}/>
           </section>
           <section className="reply">
             <button ref = "run" onClick = {this.run.bind(this)} className="btn btn-primary btn-mic">Play</button>
             <div className="reply__record">
               <span className="text">record your reply</span>
-              <p ref = "user_speech" className="text">Your reply</p>
+              <p ref = "user_speech" className="text"></p>
               <p ref = "result"></p>
-            </div>          
+            </div>   
+            <div className={this.setClass()}>
+              {this.showResult()}
+            </div>              
            </section>
+            <section className={this.state.showHelp ? 'help' : 'help hidden'}>
+              <div className="help__popup">
+                <h3 className="h3">Try to say:</h3>
+                <p className="text-important">Can I get a seat near the aisle?</p>
+                <p className="text-important">Can I get a seat near the aisle?</p>
+                <button type="button" name="button" className="btn-close">close</button>
+              </div>
+            </section>
         </section>
       );
     }

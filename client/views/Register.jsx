@@ -3,7 +3,8 @@ import RegisterForm from '../components/forms/RegisterForm.jsx';
 
 export default class Register extends Component {
 	static defaultProps = {
-			loginLink: <p> "Already have an account?" <a href="/login">Sign In</a></p>
+			loginLink: <a href="/login" className="sign__link">Sign in</a>
+
 	}
 
 	createUser(e) {
@@ -30,15 +31,15 @@ export default class Register extends Component {
 
   render() {
     return (
-			<div className="row">
-				<div className="col-md-6 col-md-offset-3">
-					<h1>SpeakAbility</h1>
-						<RegisterForm
-							submitBtnLabel="Register"
-							submitAction={this.createUser}/>
-					 {this.props.loginLink}
-				</div>
+    	  <main className = "container clearfix">
+			<div className="sign sign__up clearfix">
+				<h1 className="sign__title logo">SpeakAbility</h1>
+				<RegisterForm
+					submitBtnLabel="Register"
+					submitAction={this.createUser}/>
+				{this.props.loginLink}
 			</div>
+		</main>	
 		);
   }
 }
