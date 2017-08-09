@@ -303,7 +303,8 @@ class User extends Component{
       event.preventDefault();
       this.changeResult('alert hidden');
       if (this.returnCurNumPhrase() === this.returnTasksLength()) {
-      
+        console.log("this.returnCurNumPhrase() " + this.returnCurNumPhrase());
+        console.log("this.returnTasksLength()" + this.returnTasksLength());
         this.setState({isEnd: true});
  
       } 
@@ -311,7 +312,7 @@ class User extends Component{
       if (this.state.isEnd !== true){ // если это не последнее задание
         if (this.state.isWrong){ // проверяем если этот ответ не правильный
           if (this.state.curNumAttempt === 2){ // если попытки уже было 3
-           // this.countAttempt(-2); // сбрасываем счетчик попыток
+            this.countAttempt(-2); // сбрасываем счетчик попыток
             this.giveHelp();//показываем подсказку
             this.setLastAttempt(true);
             //без разницы что сказал, надо перекинуть дальше
