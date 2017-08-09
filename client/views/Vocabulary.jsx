@@ -38,7 +38,7 @@ class Vocabulary extends Component {
           <div className="container clearfix">
             <div className="breadcrumbs">
               <ul>
-                <li><a href="Dashboard" className="breadcrumbs__link">Dashboard</a></li>
+                <li><a href="/Dashboard/" className="breadcrumbs__link">Dashboard</a></li>
                 <li><a href = {"/Introduction/" + this.props.location_id} className="breadcrumbs__link">Introduction</a></li>
                 <li><a className="breadcrumbs__link breadcrumbs__link--current">Vocabulary</a></li>
               </ul>
