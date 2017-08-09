@@ -62,15 +62,19 @@ class Hints extends Component{
     }
     return arr_hints[item];
   }
-  getWords(item){
+  getWords(item, count){
     let i = 0;
     let arr_tasks = this.props.scen.tasks;
+    let arr_allwords = arr_tasks[item].words;
+    let arr_allwords_length = arr_allwords.length; 
+    let howMuch = ((arr_allwords_length*(count + 1))/3 )- 1;
     let arr_words = [];
-    while (i <= arr_tasks.length-1) {
-        arr_words.push(arr_tasks[i].words);
+
+    while (i <= howMuch) {
+        arr_words.push(arr_allwords[i]);
         i++;
     }
-    return arr_words[item];
+    return arr_words;
   }
   render(){
     if (!this.props.scen) {return null;}  
@@ -83,7 +87,7 @@ class Hints extends Component{
           </div>
           <div className="conversation__words">
             <h3 className="h3">Use these words:</h3>
-            <Words words = {this.getWords(this.props.curNumPhrase)} />
+            <Words words = {this.getWords(this.props.curNumPhrase, this.props.numAttempt)} />
           </div>
         </div>
       );
@@ -152,8 +156,10 @@ class User extends Component{
         isTrue: false,
         isEnd: false,
         showHelp: false,
-        classResult: 'hidden',
-        clickHideHint: false
+        classResult: 'alert hidden',
+        clickHideHint: false,
+        truePhrase: '',
+        alert: ''
       };
     }
     getPhrases(index){//масисив с прав фразами
@@ -183,11 +189,26 @@ class User extends Component{
     removeHelp(){
       this.setState({showHelp: false});
     }
+    isHelp(){
+      return this.state.showHelp;
+    }
     countAttempt(index){
       this.setState({curNumAttempt: this.state.curNumAttempt + index});
     }
     countNumPhrase(index){
       this.setState({curNumPhrase: this.state.curNumPhrase + index});
+    }
+    setTruePhrase(value){
+      this.setState({TruePhrase: value});
+    }
+    showTruePhrase(){
+      return this.state.truePhrase;
+    }
+    changeResult(value){
+      this.setState({classResult: value});
+    }
+    changeAlert(value){
+      this.setState({alert: value});
     }
     testSpeech(){
 
@@ -199,7 +220,6 @@ class User extends Component{
       testBtn.disabled = true;
       testBtn.textContent = 'wait a minute';
       resultPara.textContent = '';
-      this.removeHelp();
 
       var phrases = this.getPhrases(this.state.curNumPhrase); // текущий массив фраз
       var Component = this;
@@ -217,28 +237,29 @@ class User extends Component{
       speechRecognitionList.addFromString(grammar, 1);
       recognition.grammars = speechRecognitionList;
 
-     
+      this.setTruePhrase(phrases[0]);    
       recognition.start();
 
       recognition.onresult = (event) => {
         var speechResult = event.results[0][0].transcript;
         user_speechPara.textContent = speechResult;
-
         speechResult = speechResult.toLowerCase();
         phrases = phrases.join('|').toLowerCase().split('|');
 
         if ( this.includePhrase(speechResult, phrases) ) {
-
-           /* resultPara.textContent = "Success! Move on to the next task";
-            resultPara.style.color = 'lime';*/
-            this.makeTrue();
-            this.countNumPhrase(1);
+              this.changeResult('alert alert--success');
+              this.changeAlert('Succes! Move on to the next task');
+              this.makeTrue();
+              this.countNumPhrase(1);
         } else {
-           /* resultPara.textContent = "You didn't get that right, try again";
-            resultPara.style.color = 'red';*/
-             this.makeWrong(); 
-             this.countAttempt(1);
+              this.changeResult('alert alert--danger');
+              this.changeAlert('You didn’t get that right, try again');
+              this.makeWrong(); 
+              this.countAttempt(1);
         }
+       /* if(this.isHelp()){
+          this.countNumPhrase(1);
+        }*/
       }
     
 
@@ -246,6 +267,7 @@ class User extends Component{
         recognition.stop();
         testBtn.disabled = false;
         testBtn.textContent = 'Continue';
+
       }
 
       recognition.onerror = function(event) {
@@ -253,9 +275,7 @@ class User extends Component{
         alert('Error occurred in recognition: ' + event.error);
         testBtn.textContent = 'Rewrite';
       }
-
     }
-
     returnCurNumPhrase(){
       return this.state.curNumPhrase;
     }
@@ -264,45 +284,37 @@ class User extends Component{
     }
     run(event){
       event.preventDefault();
+      this.changeResult('alert hidden');
       if (this.returnCurNumPhrase() >= this.returnTasksLength()) {
         this.setState({isEnd: true});
         alert("The end! Click Record Voice");
       } 
+      console.log(this.state.curNumAttempt);
       if (this.state.isEnd !== true){ // если это не последнее задание
         if (this.state.isWrong){ // проверяем если этот ответ не правильный
-          if (this.state.curNumAttempt === 3){ // если попытки уже было 3
-            this.countAttempt(-3); // сбрасываем счетчик попыток
-            this.giveHelp();
-            alert("3!");
+          if (this.state.curNumAttempt === 2){ // если попытки уже было 3
+            this.countAttempt(-2); // сбрасываем счетчик попыток
+            this.giveHelp();//показываем подсказку
+            //без разницы что сказал, надо перекинуть дальше
+          } else {
+            this.removeHelp();
           }
         }
         this.testSpeech();
-      } else {
+      } else {//может проверить на последнюю фразу?
         let par = { location_id: this.props.scenario.name};
         FlowRouter.go('Congratulation', par);
       }
     }
 
     showResult(){
-      let setText='';
-      if (this.state.isTrue){
-        setText = 'Succes! Move on to the next task';
-      }
-      else{
-        if (this.state.isWrong)
-          setText = 'You didn’t get that right, try again';
-      }
-      return setText;
+      return this.state.alert;
     }
     setClassResult(){
-      /*  if (this.state.isTrue){
-        this.setState({classResult: 'alert alert--success'});
-      }
-      else{
-        if (this.state.isWrong)
-          this.setState({classResult: 'alert alert--danger'});
-      }*/
       return this.state.classResult;      
+    }
+    setClassResultHelp(){
+      return;
     }
     render() {
       return(
@@ -312,7 +324,7 @@ class User extends Component{
             <Audio scen = {this.props.scenario} curNumPhrase = {this.state.curNumPhrase}/>
           </section>  
           <section className="conversation__hints">
-            <Hints numAttemt= {this.state.curNumAttempt}scen = {this.props.scenario} curNumPhrase = {this.state.curNumPhrase} isSpeech = {this.state.isSpeech}/>
+            <Hints numAttempt= {this.state.curNumAttempt} scen = {this.props.scenario} curNumPhrase = {this.state.curNumPhrase} isSpeech = {this.state.isSpeech}/>
           </section>
           <section className="reply">
             <button ref = "run" onClick = {this.run.bind(this)} className="btn btn-primary btn-mic">Play</button>
@@ -325,10 +337,10 @@ class User extends Component{
               {this.showResult()}
             </div>              
            </section>
-            <section className={this.state.showHelp ? 'help' : 'help hidden'}>
+            <section className={this.isHelp() ? 'help' : 'help hidden'}>
               <div className="help__popup">
                 <h3 className="h3">Try to say:</h3>
-                <p className="text-important">Can I get a seat near the aisle?</p>
+                <p className="text-important">{this.state.TruePhrase}</p>
                 <button type="button" name="button" onClick = {this.removeHelp.bind(this)} className = 'btn-close'>close</button>
               </div>
             </section>

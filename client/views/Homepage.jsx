@@ -5,7 +5,7 @@ import React, { Component } from 'react';
 export default class Homepage extends Component {
   render() {
       return (
-          <div className = "container clearfix">
+          <div>
             <section className="lp-content lp-content--intro">
               <div className="container clearfix">
                 <p>
@@ -13,7 +13,6 @@ export default class Homepage extends Component {
                 </p>
               </div>
             </section>
-
 
             <section className="lp-content lp-content--benefit lp-content--situations">
               <div className="container clearfix">
@@ -44,39 +43,38 @@ export default class Homepage extends Component {
               </div>
             </section>
 
-              <section className="lp-content lp-content--benefit lp-content--feedback">
+            <section className="lp-content lp-content--benefit lp-content--feedback">
                 <div className="container clearfix">
                   <h2>Feedback</h2>
                   <p>
                     We are using speach recognition instruments to give you a feedback on your replies
                   </p>
-                  <div className="lp-content__phone">
+                  <div className="lp-content__device">
                     <span className="tip tip-1">listen to the audio</span>
                     <span className="tip tip-2">read the task</span>
                     <span className="tip tip-3">reply using keywords</span>
-                    <span className="iphone"></span>
+                    <span className="device"></span>
                   </div>
                 </div>
-              </section>
+            </section>
 
-              <section className="lp-content lp-content--features">
+            <section className="lp-content lp-content--features">
                 <div className="container clearfix">
                   <p className="feature feature--comfort">Practice your English speaking skills anytime, anywhere</p>
                   <p className="feature feature--vr">Use VR extention to dive into the experience</p>
                   <p className="feature feature--savings">No need to spend time or money to get to language clubs or courses</p>
                 </div>
-              </section>
+            </section>
 
-
-              <section className="lp-content lp-content--cta">
+            <section className="lp-content lp-content--cta">
                 <h2>
                   Stop worrying <br/>
                   Start speaking
                 </h2>
                 <a href="Register" className="btn btn-primary btn-cta btn-cta--header">Try demo for free</a>
-              </section>
+            </section>
 
-              <footer className="footer">
+            <footer className="footer">
                 <div className="container clearfix">
                   <nav className="footer__nav footer__nav--lp">
                     <ul>
@@ -84,7 +82,7 @@ export default class Homepage extends Component {
                     </ul>
                   </nav>
                 </div>
-              </footer>
+            </footer>
           </div>
       );
   }

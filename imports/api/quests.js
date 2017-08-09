@@ -17,19 +17,19 @@ dbQuestsScenario.remove({});*/
            user_phrase: ["sorry i don't understand", "sorry i do not understand", "i am sorry i don't understand", "don't understand sorry", "do not understand sorry"],
            bot_phrase: "Ladies and gentlemen, welcome to John Franklin Kennedy International Airport",
            hint: "say that you are sorry and you don't understand",
-           words: ["sorry", "understand", "don't", "i"]
+           words: ["sorry", "understand", "don't", "i","one","two"]
          },
          {
            user_phrase: ["hello how are you","how are you hello","hi how are you", "how are you hi"],
            bot_phrase: "hi",
            hint: "say hello and ask how you are",
-           words: ["hello", "how", "are", "you"]
+           words: ["hello", "how", "are", "you","a","b"]
          },
          {
            user_phrase: ["i don't know","i do not know",],
            bot_phrase: "where can i buy a ticket",         
            hint: "say that you don't know",
-           words: ["know", "don't", "i"]
+           words: ["know", "don't", "i","d","g","h"]
          }
        ],
       video: "https://youtu.be/5SHNBFfdTZ0"
@@ -41,7 +41,6 @@ dbQuests.insert(
   {
    name: "New York",
    duration: 20,
-   img: "/images/New-York.jpg",
    locations: [
      {
        id: "New_York_Airport",
