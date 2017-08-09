@@ -4,16 +4,16 @@ export const dbQuests = new Mongo.Collection('quests');
 export const dbQuestsScenario = new Mongo.Collection('scenario');
 
 
-/*dbQuests.remove({});
+dbQuests.remove({});
 dbQuestsScenario.remove({});
-*/
+
 /*
  dbQuestsScenario.insert(
     {
       name: "New_York_Airport",
       congratulation: "Good job! Press to move on to the next task",
       tasks: [
-         {
+        {
            user_phrase: [ 
            "Excuse me what terminal is this",
            "Excuse me which terminal is that",
@@ -23,23 +23,26 @@ dbQuestsScenario.remove({});
            "Excuse me what terminal are we at",
            "Excuse me where are we"
            ],
-           bot_phrase: "Hello. How can I help you?",
+           bot_phrase: "Welcome to John Franklin Kennedy International Airport. How can I help you?",
            hint: "JFK has 8 terminals. Ask a stewardess which terminal you are at. Note that the polite way to ask a question is to start it with the 'Excuse me'",
            words: ["that/this", "what/which", "terminal","arrive","is/at","excuse"]
          },
-         {
+        {
            user_phrase: [
-           "Where should I go"
+           "So where should I go now",
+            "Where should I go",
+            "What is next",
+            "What’s next"
            ],
-           bot_phrase: "Something else?",
-           hint: "Ask the flight attendant where you should go from there",
-           words: ["where", "go", "should","i  ","5","6"]
-         },
-         {
-           user_phrase: ["Thank you", "Thanks a lot", "Thanks","Thank you so mush", "Thank you very much", "Thanks very much", "It's nice of you", "It is nice of you"],
+           bot_phrase: "This is terminal number one. Is there anything else I can help you with?",
+           hint: "Ask the flight attendant where you should go next",
+           words: ["where", "go", "should","i","so","now"]
+        },
+        {
+           user_phrase: ["Thank you", "Thanks a lot", "Thanks","Thank you so much", "Thank you very much", "Thanks very much", "It's nice of you", "It is nice of you"],
            bot_phrase: "Go straight, then turn left, then turn right. Oh, anyways, you should follow the signs and other passengers.",         
            hint: "Thank the person",
-           words: ["thank", "you", "a lot/much","so","nice","of"]
+           words: ["thank", "you", "so much"]
          }
        ],
       video: "https://youtu.be/5SHNBFfdTZ0"
@@ -64,29 +67,48 @@ dbQuestsScenario.remove({});
            hint: "Ask where you can find a taxi",
            words: [
             "where",
-            "can/is",
+            "can",
             "get",
-            "taxi",
-            "sorry/excuse",
-            "me"
+            "a taxi",
+            "excuse me",
+            "I"
            ]
          },
          {
            user_phrase: [
-            "Can you take me to fifth Avenue",
+            "Can you take me to the fifth Avenue",
             "Can you take me to 5th Avenue",
             "Take me to fifth Avenue",
             "Take to fifth Avenue"
            ],
-           bot_phrase: "Tell the driver to take you to 5th Avenue",
-           hint: "Where can I take you?",
+           bot_phrase: "You’ve already found it! I’m a taxi driver. Where can I take you?",
+           hint: "Tell the driver to take you to 5th Avenue",
            words: [
             "can",
-            "take",
-            "fifth",
+            "take to",
+            "fifth avenue",
             "me",
             "you",
             "me"
+            ]
+         },
+       {
+           user_phrase: [
+            "Ok here is hundred dollars",
+            "That is ok here is hundred dollars",
+            "That’s ok here is hundred dollars",
+            "It is ok here is hundred dollars",
+            "It’s ok here is hundred dollars"
+           ],
+           bot_phrase: "Yeah, sure! It’ll cost you 56 dollars.",
+           hint: "You’re ready to pay, but you only have 100s",
+           words: [
+            "that’s",
+            "here",
+            "ok",
+            "is",
+            "hundred",
+            "dollars",
             ]
          },
          {
@@ -94,18 +116,18 @@ dbQuestsScenario.remove({});
             "Thank you Keep the rest",
             "Thanks a lot Keep the rest",
             "Thanks Keep the rest",
-            "Thank you so mush Keep the rest",
+            "Thank you so much Keep the rest",
             "Thank you very much Keep the rest",
             "Thanks very much Keep the rest"
             ],
-           bot_phrase: "Here is your 42 dollars.",
-           hint: "Pay the taxi driver, but you only have 100s. Thank the person and tell them to keep the change.",
+           bot_phrase: "Okay. Here are your 44 dollars.",
+           hint: "Thank the person and tell them to keep the change.",
            words: [
             "thank",
             "rest",
             "keep",
             "you",
-            "much/so",
+            "so much",
             "the"
           ]
          }
@@ -148,12 +170,12 @@ dbQuestsScenario.remove({});
            bot_phrase: "Sorry?",
            hint: "You’ve just come to 11 West 53 Street and don’t see the entrance, ask for people’s help. Ask where the entrance to museum is politely.",
            words: [
-            "Sorry/Excuse",
-            "where is",
-            "entrance",
-            "modern art",
-            "entrance",
-            "museum"
+            "sorry",
+            "where",
+            "the entrance",
+            "a museum of modern art",
+            "to",
+            "is"
             ]
          },
          {
@@ -167,15 +189,15 @@ dbQuestsScenario.remove({});
            "Sorry can I buy two tickets",
            "Sorry can I buy two tickets please",
            ],
-           bot_phrase: "How much?",
-           hint: "You entered the museum and got in line to buy your tickets. Buy two tickets for you and your friend. Buy two tickets using construction 'Can I…'",
+           bot_phrase: "Welcome to a Museum of Modern art. How can I help you?",
+           hint: "You entered the museum and got in line to buy your tickets. Buy two tickets for you and your friend. Do it using construction 'Can I…'",
            words: [
-            "get/buy",
-            "tickets",
+            "get",
             "can",
+            "I",
             "two",
             "please",
-            "sorry"
+            "tickets"
             ]
          },
          {
@@ -185,15 +207,15 @@ dbQuestsScenario.remove({});
             "Hello do you have guided tours",
             "Do you have guided tours",
            ],
-           bot_phrase: "You are inside. You feel passionate about impressionists and want to run through the exhibitions to find them. Ask clerk for any guided tours",
-           hint: "",
+           bot_phrase: "Here are your tickets. Enjoy and feel free to ask our clerks for any sort of help",
+           hint: "You are inside. You feel passionate about impressionists and want to run through the exhibitions to find them. Ask clerk for any guided tours",
            words: [
             "do",
             "guided tours",
             "have",
             "you",
             "any",
-            "hello"
+            "sorry"
             ]
          }
        ],
@@ -201,6 +223,7 @@ dbQuestsScenario.remove({});
    }
   );
 
+//////////////////////Город
 dbQuests.insert(
   {
    name: "New York",
@@ -235,7 +258,7 @@ dbQuests.insert(
          {english: "Painting", russian: "Картина"},
          {english: "Membership", russian: "Членство"}
        ],
-       description: "You decided to visit some famous places in New York. Museum of modern arts looks like a good option. Find an entrance, buy a tickets, check out the impressionists exhibition and buy some souvenirs.",
+       description: "You decided to visit some famous places in New York. Museum of modern art looks like a good option. Find an entrance, buy a tickets, check out the impressionists exhibition and buy some souvenirs.",
        conversation: "right now conversation"
      },
       {

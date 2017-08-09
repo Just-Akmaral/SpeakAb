@@ -264,6 +264,7 @@ class User extends Component{
                 this.changeAlert('You didn’t get that right, try again');
               } else {
                 this.changeAlert('You didn’t get that right');
+               this.countNumPhrase(1); 
               }
               this.makeWrong(); 
               this.countAttempt(1);
