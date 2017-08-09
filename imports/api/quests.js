@@ -3,10 +3,10 @@ import { Mongo } from 'meteor/mongo';
 export const dbQuests = new Mongo.Collection('quests');
 export const dbQuestsScenario = new Mongo.Collection('scenario');
 
-/*
+
 dbQuests.remove({});
 dbQuestsScenario.remove({});
-*/
+
 /*
  dbQuestsScenario.insert(
     {
@@ -23,7 +23,7 @@ dbQuestsScenario.remove({});
            "Excuse me what terminal are we at",
            "Excuse me where are we"
            ],
-           bot_phrase: "Good day. What is the purpose of your visit? Welcome to John Franklin Kennedy International Airport. How can I help you? I am traveling.",
+           bot_phrase: "Welcome to John Franklin Kennedy International Airport. How can I help you?",
            hint: "JFK has 8 terminals. Ask a stewardess which terminal you are at. Note that the polite way to ask a question is to start it with the 'Excuse me'",
            words: ["that/this", "what/which", "terminal","arrive","is/at","excuse"]
          },
@@ -63,7 +63,7 @@ dbQuestsScenario.remove({});
            "Sorry where can I get a taxi", 
            "Sorry where is the taxi"
            ],
-           bot_phrase: "Good day. What is the purpose of your visit?  Hi, how may I help you?",
+           bot_phrase: "Hi, how may I help you?",
            hint: "Ask where you can find a taxi",
            words: [
             "where",

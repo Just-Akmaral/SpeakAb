@@ -126,7 +126,7 @@ class Audio extends Component{
   setAudio(text){
     var utterance = new SpeechSynthesisUtterance(text);
     var voices = window.speechSynthesis.getVoices();
-    utterance.voice = voices.filter(function(voice) {return voice.name == 'Google UK English Male'; })[0];
+    utterance.voice = voices.filter(function(voice) {return voice.name == 'Google US English'; })[0];
     window.speechSynthesis.speak(utterance);
   }
   runAudio(event){
