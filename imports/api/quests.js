@@ -23,7 +23,7 @@ dbQuestsScenario.remove({});
            "Excuse me what terminal are we at",
            "Excuse me where are we"
            ],
-           bot_phrase: "Welcome to John Franklin Kennedy International Airport. How can I help you?",
+           bot_phrase: "I am travel. Welcome to John Franklin Kennedy International Airport. How can I help you? I am traveling.",
            hint: "JFK has 8 terminals. Ask a stewardess which terminal you are at. Note that the polite way to ask a question is to start it with the 'Excuse me'",
            words: ["that/this", "what/which", "terminal","arrive","is/at","excuse"]
          },
