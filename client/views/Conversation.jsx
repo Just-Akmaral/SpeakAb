@@ -77,7 +77,7 @@ class Hints extends Component{
     return arr_words;
   }
   render(){
-    if (!this.props.scen) {return null;}  
+    if ((!this.props.scen) ){return null;}  
     else {  
       return(
         <div>
@@ -159,7 +159,8 @@ class User extends Component{
         classResult: 'alert hidden',
         clickHideHint: false,
         truePhrase: '',
-        alert: ''
+        alert: '',
+        lastAttempt: false
       };
     }
     getPhrases(index){//масисив с прав фразами
@@ -210,6 +211,12 @@ class User extends Component{
     changeAlert(value){
       this.setState({alert: value});
     }
+    setLastAttempt(value){
+      this.setState({lastAttempt: value});
+    }
+    isLastAttempt(){
+      return this.state.lastAttempt;
+    }
     testSpeech(){
 
       var resultPara = this.refs.result;
@@ -253,17 +260,14 @@ class User extends Component{
               this.countNumPhrase(1);
         } else {
               this.changeResult('alert alert--danger');
-            //  if (this.returnCurNumAttempt() !== 2){
+              if (!this.isLastAttempt()){
                 this.changeAlert('You didn’t get that right, try again');
-            /*  } else {
+              } else {
                 this.changeAlert('You didn’t get that right');
-              }*/
+              }
               this.makeWrong(); 
               this.countAttempt(1);
         }
-       /* if(this.isHelp()){
-          this.countNumPhrase(1);
-        }*/
       }
     
 
@@ -298,19 +302,22 @@ class User extends Component{
     run(event){
       event.preventDefault();
       this.changeResult('alert hidden');
-      if (this.returnCurNumPhrase() >= this.returnTasksLength()) {
+      if (this.returnCurNumPhrase() === this.returnTasksLength()) {
+      
         this.setState({isEnd: true});
-        alert("The end! Click Record Voice");
+ 
       } 
-      console.log(this.state.curNumAttempt);
+      console.log("curNumAttempt " + this.state.curNumAttempt);
       if (this.state.isEnd !== true){ // если это не последнее задание
         if (this.state.isWrong){ // проверяем если этот ответ не правильный
           if (this.state.curNumAttempt === 2){ // если попытки уже было 3
            // this.countAttempt(-2); // сбрасываем счетчик попыток
             this.giveHelp();//показываем подсказку
+            this.setLastAttempt(true);
             //без разницы что сказал, надо перекинуть дальше
           } else {
             this.removeHelp();
+            this.setLastAttempt(false);
           }
         }
         this.testSpeech();
