@@ -23,7 +23,7 @@ dbQuestsScenario.remove({});
            "Excuse me what terminal are we at",
            "Excuse me where are we"
            ],
-           bot_phrase: "I am travel. Welcome to John Franklin Kennedy International Airport. How can I help you? I am traveling.",
+           bot_phrase: "What is the purpose of your visit? Welcome to John Franklin Kennedy International Airport. How can I help you? I am traveling.",
            hint: "JFK has 8 terminals. Ask a stewardess which terminal you are at. Note that the polite way to ask a question is to start it with the 'Excuse me'",
            words: ["that/this", "what/which", "terminal","arrive","is/at","excuse"]
          },
@@ -34,7 +34,7 @@ dbQuestsScenario.remove({});
             "What is next",
             "What’s next"
            ],
-           bot_phrase: "This is terminal number one. Is there anything else I can help you with?",
+           bot_phrase: "What is the purpose of your visit? This is terminal number one. Is there anything else I can help you with?",
            hint: "Ask the flight attendant where you should go next",
            words: ["where", "go", "should","i","so","now"]
         },
@@ -63,7 +63,7 @@ dbQuestsScenario.remove({});
            "Sorry where can I get a taxi", 
            "Sorry where is the taxi"
            ],
-           bot_phrase: "Hi, how may I help you?",
+           bot_phrase: "What is the purpose of your visit?Hi, how may I help you?",
            hint: "Ask where you can find a taxi",
            words: [
             "where",
