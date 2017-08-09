@@ -253,7 +253,11 @@ class User extends Component{
               this.countNumPhrase(1);
         } else {
               this.changeResult('alert alert--danger');
-              this.changeAlert('You didn’t get that right, try again');
+            //  if (this.returnCurNumAttempt() !== 2){
+                this.changeAlert('You didn’t get that right, try again');
+            /*  } else {
+                this.changeAlert('You didn’t get that right');
+              }*/
               this.makeWrong(); 
               this.countAttempt(1);
         }
@@ -263,11 +267,17 @@ class User extends Component{
       }
     
 
-      recognition.onspeechend = function() {
+      recognition.onspeechend = () => {
         recognition.stop();
         testBtn.disabled = false;
         testBtn.textContent = 'Continue';
-
+        //если это была третья попытка
+        // перекинь на след фразу
+        if (this.returnCurNumAttempt() === 2){
+          this.countNumPhrase(1);
+          this.countAttempt(-2);
+          this.removeHelp();
+        }
       }
 
       recognition.onerror = function(event) {
@@ -278,6 +288,9 @@ class User extends Component{
     }
     returnCurNumPhrase(){
       return this.state.curNumPhrase;
+    }
+    returnCurNumAttempt(){
+      return this.state.curNumAttempt;
     }
     returnTasksLength(){
       return this.props.scenario.tasks.length-1; 
@@ -293,7 +306,7 @@ class User extends Component{
       if (this.state.isEnd !== true){ // если это не последнее задание
         if (this.state.isWrong){ // проверяем если этот ответ не правильный
           if (this.state.curNumAttempt === 2){ // если попытки уже было 3
-            this.countAttempt(-2); // сбрасываем счетчик попыток
+           // this.countAttempt(-2); // сбрасываем счетчик попыток
             this.giveHelp();//показываем подсказку
             //без разницы что сказал, надо перекинуть дальше
           } else {

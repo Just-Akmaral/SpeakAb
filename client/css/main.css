@@ -72,6 +72,9 @@ body {
   color: #31353A;
   font-weight: 300; }
 
+main {
+  padding-bottom: 60px; }
+
 a {
   text-decoration: none;
   cursor: pointer;
@@ -393,6 +396,8 @@ input {
 @media (max-width: 768px) {
   .header--lp {
     max-height: 500px; }
+  .header__nav .logo::after {
+    height: 43px; }
   .header__title {
     font-size: 34px; }
   .header__subtitle {
@@ -660,6 +665,10 @@ input {
       background-image: url("/images/pic/card-apartment.jpg"); }
     .map__location--airport {
       background-image: url("/images/pic/card-airport.jpg"); }
+    .map__location--taxi {
+      background-image: url("/images/pic/card-taxi.jpg"); }
+    .map__location--museum {
+      background-image: url("/images/pic/card-museum.jpg"); }
   .map__title {
     color: #fff;
     font-size: 16px;
@@ -701,7 +710,13 @@ input {
         left: 40%; }
       .map__location--airport {
         top: 53%;
-        left: 61%; } }
+        left: 61%; }
+      .map__location--taxi {
+        top: 49%;
+        left: 45%; }
+      .map__location--museum {
+        top: 23%;
+        left: 40%; } }
 
 @media (min-width: 1200px) {
   .map__location--sightseeing {

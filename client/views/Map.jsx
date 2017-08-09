@@ -5,7 +5,7 @@ import { createContainer } from 'meteor/react-meteor-data';
 class Locations extends Component {
   render(){
       return (
-        <a href={"/Introduction/" + this.props.location_item.id} className={'map__location map__location--' + this.props.location_item.name}>
+        <a href={"/Introduction/" + this.props.location_item.id} className={'map__location map__location--' + this.props.location_item.name.toLowerCase()}>
           <h3 className="map__title">{this.props.location_item.name}</h3>
         </a>
 
