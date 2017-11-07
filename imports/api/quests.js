@@ -14,7 +14,7 @@ dbQuestsScenario.remove({});
       congratulation: "Good job! Press to move on to the next task",
       tasks: [
         {
-           user_phrase: [ 
+           user_phrase: [
            "Excuse me what terminal is this",
            "Excuse me which terminal is that",
            "Excuse me which terminal is this",
@@ -40,7 +40,7 @@ dbQuestsScenario.remove({});
         },
         {
            user_phrase: ["Thank you", "Thanks a lot", "Thanks","Thank you so much", "Thank you very much", "Thanks very much", "It's nice of you", "It is nice of you"],
-           bot_phrase: "Go straight, then turn left, then turn right. Oh, anyways, you should follow the signs and other passengers.",         
+           bot_phrase: "Go straight, then turn left, then turn right. Oh, anyways, you should follow the signs and other passengers.",
            hint: "Thank the person",
            words: ["thank", "you", "so much"]
          }
@@ -56,11 +56,11 @@ dbQuestsScenario.remove({});
       tasks: [
          {
            user_phrase: [
-           "Excuse me where can I get a taxi",  
+           "Excuse me where can I get a taxi",
            "Where can I get a taxi",
            "Excuse me where is the taxi",
            "Where is the taxi",
-           "Sorry where can I get a taxi", 
+           "Sorry where can I get a taxi",
            "Sorry where is the taxi"
            ],
            bot_phrase: "Hi, how may I help you?",
@@ -112,7 +112,7 @@ dbQuestsScenario.remove({});
             ]
          },
          {
-           user_phrase: [            
+           user_phrase: [
             "Thank you Keep the rest",
             "Thanks a lot Keep the rest",
             "Thanks Keep the rest",
