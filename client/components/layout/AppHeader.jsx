@@ -1,20 +1,16 @@
-import React, { Component } from 'react';
-
+import React, { Component } from "react";
 
 export default class AppHeader extends Component {
-
   static defaultProps = {
-      appClass: '',
-      userNav: null
-    }
+    appClass: "",
+    userNav: null
+  };
 
-render() {
+  render() {
     return (
-        <header className = {'header ' + this.props.appClass}>
-          <div className = "container clearfix">
-              {this.props.userNav}
-          </div>
-        </header>
-    )
+      <header className={"header " + this.props.appClass}>
+        <div className="container clearfix">{this.props.userNav}</div>
+      </header>
+    );
   }
 }

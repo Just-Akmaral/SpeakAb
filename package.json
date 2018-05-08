@@ -9,7 +9,7 @@
     "bcrypt": "^1.0.3",
     "jaccard-similarity-sentences": "^1.0.2",
     "meteor-node-stubs": "~0.2.4",
-    "prop-types": "^15.6.0",
+    "prop-types": "^15.6.1",
     "react": "^15.6.2",
     "react-addons-pure-render-mixin": "^15.6.0",
     "react-dom": "^15.6.2",

@@ -1,2 +1,5 @@
 node_modules/
 .meteor/local
+.meteor/*
+.gitignore
+package-lock.json
