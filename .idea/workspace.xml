@@ -2,27 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d8e8be45-193e-43cd-b531-518a2a36b650" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/jsLibraryMappings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/libraries/meteor_packages_auto_import_browser.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/forms/LoginForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/forms/LoginForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/forms/RegisterForm.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/forms/RegisterForm.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/components/layout/AppHeader.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/components/layout/AppHeader.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/views/Congratulation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/views/Congratulation.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/views/Conversation.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/views/Conversation.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/views/Homepage.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/views/Homepage.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/views/Introduction.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/views/Introduction.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/views/Login.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/views/Login.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/views/Map.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/views/Map.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/views/Register.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/views/Register.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/client/views/Vocabulary.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/client/views/Vocabulary.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imports/api/quests.js" beforeDir="false" afterPath="$PROJECT_DIR$/imports/api/quests.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imports/ui/App.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/imports/ui/App.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/imports/ui/Dashboard.jsx" beforeDir="false" afterPath="$PROJECT_DIR$/imports/ui/Dashboard.jsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server/main.js" beforeDir="false" afterPath="$PROJECT_DIR$/server/main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -36,32 +17,32 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="Register.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/Register.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Vocabulary.jsx" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/client/views/Vocabulary.jsx">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <folding>
-                <element signature="e#0#41#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="LoginForm.jsx" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/client/components/forms/LoginForm.jsx">
           <provider selected="true" editor-type-id="text-editor">
             <state>
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Congratulation.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/views/Congratulation.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state>
+              <folding>
+                <element signature="e#0#41#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Conversation.jsx" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/client/views/Conversation.jsx">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-408">
               <folding>
                 <element signature="e#0#41#0" expanded="true" />
               </folding>
@@ -133,8 +114,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="9" lean-forward="true" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+            <state relative-caret-position="68">
+              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
             </state>
           </provider>
         </entry>
@@ -199,28 +180,6 @@
             <path>
               <item name="old project" type="b2602c69:ProjectViewProjectNode" />
               <item name="old project" type="462c0819:PsiDirectoryNode" />
-              <item name=".meteor" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="old project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="old project" type="462c0819:PsiDirectoryNode" />
-              <item name="imports" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="old project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="old project" type="462c0819:PsiDirectoryNode" />
-              <item name="imports" type="462c0819:PsiDirectoryNode" />
-              <item name="api" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="old project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="old project" type="462c0819:PsiDirectoryNode" />
-              <item name="imports" type="462c0819:PsiDirectoryNode" />
-              <item name="ui" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="old project" type="b2602c69:ProjectViewProjectNode" />
-              <item name="old project" type="462c0819:PsiDirectoryNode" />
               <item name="server" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -264,12 +223,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1525746072270</updated>
-      <workItem from="1525746078051" duration="552000" />
+      <workItem from="1525746078051" duration="1031000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="552000" />
+    <option name="totallyTimeSpent" value="1031000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-7" y="-7" width="1295" height="695" extended-state="6" />
@@ -304,24 +263,6 @@
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor" />
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/Congratulation.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-663">
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/views/Conversation.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/views/Homepage.jsx">
       <provider selected="true" editor-type-id="text-editor">
@@ -367,15 +308,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/client/views/Vocabulary.jsx">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/client/components/forms/LoginForm.jsx">
       <provider selected="true" editor-type-id="text-editor">
         <state>
           <folding>
@@ -433,10 +365,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/client/components/forms/LoginForm.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/Congratulation.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/client/views/Conversation.jsx">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-408">
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="9" lean-forward="true" selection-start-line="2" selection-start-column="9" selection-end-line="2" selection-end-column="9" />
+        <state relative-caret-position="68">
+          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
         </state>
       </provider>
     </entry>
