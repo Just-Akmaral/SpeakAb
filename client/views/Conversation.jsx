@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import { dbQuests, dbQuestsScenario } from "/imports/api/quests.js";
 import { createContainer } from "meteor/react-meteor-data";
-import ReactPlayer from "react-player";
 
 class Video extends Component {
   render() {
@@ -251,40 +250,40 @@ class User extends Component {
     return this.state.lastAttempt;
   }
   testSpeech() {
-    var resultPara = this.refs.result;
-    var user_speechPara = this.refs.user_speech;
-    var testBtn = this.refs.run;
+    const resultPara = this.refs.result;
+    const user_speechPara = this.refs.user_speech;
+    const testBtn = this.refs.run;
 
     user_speechPara.textContent = "";
     testBtn.disabled = true;
     testBtn.textContent = "wait a minute";
     resultPara.textContent = "";
 
-    var phrases = this.getPhrases(this.state.curNumPhrase); // текущий массив фраз
-    var Component = this;
+    let phrases = this.getPhrases(this.state.curNumPhrase); // текущий массив фраз
+    const Component = this;
     Component.setState({ curNumTry: this.state.curNumTry + 1 });
 
-    var SpeechRecognition =
+    const SpeechRecognition =
       SpeechRecognition ||
       webkitSpeechRecognition ||
       mozSpeechRecognition ||
       msSpeechRecognition;
-    var SpeechGrammarList =
+    const SpeechGrammarList =
       SpeechGrammarList ||
       webkitSpeechGrammarList ||
       mozSpeechRecognitionList ||
       msSpeechRecognitionList;
-    var SpeechRecognitionEvent =
+    const SpeechRecognitionEvent =
       SpeechRecognitionEvent ||
       webkitSpeechRecognitionEvent ||
       mozSpeechRecognitionEvent ||
       msSpeechRecognitionEvent;
-    var recognition = new SpeechRecognition();
-    var speechRecognitionList = new SpeechGrammarList();
+    const recognition = new SpeechRecognition();
+    const speechRecognitionList = new SpeechGrammarList();
     recognition.lang = "en-US";
     recognition.interimResults = false;
     recognition.maxAlternatives = 5;
-    var grammar =
+    const grammar =
       "#JSGF V1.0; grammar colors; public <color> = " +
       phrases.join(" | ") +
       " ;";
@@ -295,7 +294,7 @@ class User extends Component {
     recognition.start();
 
     recognition.onresult = event => {
-      var speechResult = event.results[0][0].transcript;
+      let speechResult = event.results[0][0].transcript;
       user_speechPara.textContent = speechResult;
       speechResult = speechResult.toLowerCase();
       phrases = phrases
